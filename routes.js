@@ -14,6 +14,10 @@ const routes = (app) => {
   //Profile page
 
   app.post("/:username", (req, res) => {});
+
+  //Crear data
+
+  app.get("/crearData", tweetController.createTweets);
 };
 
 module.exports = {
