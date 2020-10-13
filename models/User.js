@@ -9,8 +9,8 @@ const userSchema = new Schema({
   description: String,
   avatar: String,
   list_tweets: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
-  list_users_following: [{ username: String }],
-  list_users_followers: [{ username: String }],
+  list_users_following: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  list_users_followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 
 module.exports = userSchema;
