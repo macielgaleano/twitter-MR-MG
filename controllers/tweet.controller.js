@@ -1,14 +1,23 @@
 const db = require("../models/mongoose");
+const faker = require("faker");
 
 const tweetController = {
   createTweets: (req, res) => {
-    let tweets = [];
-
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < 50; i++) {
+      const user = new db.User({
+        name: faker.name.firstName(),
+        lastname: faker.name.lastName(),
+        username: faker.internet.userName(),
+        email: faker.internet.email(),
+        description: faker.lorem.words(40),
+        avatar: faker.image.avatar,
+      });
+      user.save();
       const tweet = new db.Tweet({
         title: "Historia de la academia",
         author: "Hack Academy",
       });
+      tweet.save();
     }
   },
 
