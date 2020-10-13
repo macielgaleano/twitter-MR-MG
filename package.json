@@ -1,0 +1,28 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "description": "Twitter Hack Academy",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finalstory2/twitter-MR-MG.git"
+  },
+  "author": "Mikaela y Maciel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/finalstory2/twitter-MR-MG/issues"
+  },
+  "homepage": "https://github.com/finalstory2/twitter-MR-MG#readme"
+}
