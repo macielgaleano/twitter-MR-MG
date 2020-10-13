@@ -13,6 +13,15 @@ app.use(express.json());
 
 routes(app);
 
+const db = require("./models/mongoose");
+
+const tweet = new db.Tweet({
+  content: "Historia de la academia",
+  author: "Hack Academy",
+});
+
+tweet.save();
+
 app.listen(process.env.APP_PORT, () =>
   console.log(`App on: http://localhost:${process.env.APP_PORT}`)
 );
