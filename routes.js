@@ -1,5 +1,7 @@
+const tweetController = require("./controllers/tweet.controller");
+
 const routes = (app) => {
-  app.get("/", (req, res) => res.send("Hello World!"));
+  app.get("/", tweetController.allTweets);
 };
 
 module.exports = {
