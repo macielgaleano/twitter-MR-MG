@@ -3,8 +3,8 @@ const faker = require("faker");
 const { User } = require("../models/mongoose");
 
 const tweetController = {
-  createTweets: (req, res) => {
-    for (let i = 0; i < 20; i++) {
+  createTweets: async (req, res) => {
+    for (let i = 0; i < 3; i++) {
       let username = faker.internet.userName();
 
       let user = new db.User({
