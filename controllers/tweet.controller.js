@@ -14,16 +14,23 @@ const tweetController = {
         email: faker.internet.email(),
         description: faker.lorem.words(40),
         avatar: faker.image.avatar(),
+        // list_tweets: {},
+        // list_users_following: {},
+        // list_users_followers: {},
       });
-      user.save();
+      await user.save();
       let tweet = new db.Tweet({
         content: faker.lorem.words(30),
         author: user._id,
         date_created: faker.date.past(),
         likes: 1,
       });
-      tweet.save();
+      await tweet.save();
     }
+    let users = await db.User.find({});
+    users.forEach((user) => {
+      console.log(user);
+    });
   },
 
   allTweets: async (req, res) => {
