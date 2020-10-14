@@ -1,5 +1,5 @@
 const tweetController = require("./controllers/tweet.controller");
-const tweetController = require("./controllers/user.controller");
+const userController = require("./controllers/user.controller");
 const seeder = require("./seeder");
 
 const routes = (app) => {
@@ -8,10 +8,11 @@ const routes = (app) => {
 
   //Login, register pages
 
-  app.get("/login", userController.showLogin);
-  app.get("/registro", userController.showLogin);
-  app.post("/login", (req, res) => {});
+  app.get("/login-registro", userController.showLoginRegistro);
+  
   app.post("/registro",  userController.createUser);
+  app.post("/login", userController.login);
+  app.use("/", isLoggedIn);
 
   //Profile page
 
@@ -25,3 +26,10 @@ const routes = (app) => {
 module.exports = {
   routes,
 };
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+}
