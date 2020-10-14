@@ -1,5 +1,5 @@
+const userController = require("./controllers/user.controller");
 const tweetController = require("./controllers/tweet.controller");
-const tweetController = require("./controllers/user.controller");
 const seeder = require("./seeder");
 
 const routes = (app) => {
@@ -11,11 +11,11 @@ const routes = (app) => {
   app.get("/login", userController.showLogin);
   app.get("/registro", userController.showLogin);
   app.post("/login", (req, res) => {});
-  app.post("/registro",  userController.createUser);
+  app.post("/registro", userController.createUser);
 
   //Profile page
 
-  app.post("/:username", (req, res) => {});
+  app.get("/usuario/:username", userController.userPage);
 
   //Crear data
 

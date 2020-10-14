@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <img class='img-fluid' src="<%- user.avatar%>" alt="">
+      </div>
+      <div class="col-8">
+        <h1>
+          <%- user.username %>
+        </h1>
+        <div class="h2">
+          <%- user.name + ' ' +user.lastname %>
+        </div>
+        <p class="lead">
+          <%- user.description %>
+        </p>
+        <div class="account-info">
+          <small style="display: block;"> 
+            <a href=""><%-  user.email %></a> 
+            <a href="">@<%-  user.username %></a> 
+          </small>
+          <small>Seguidores: <spam> <%-  user.list_users_followers.length
+            %></spam></small>
+          <small>Seguidos: <spam> <%-  user.list_users_following.length
+            %></spam></small>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <%- include("../partials/footer") %>
+</body>
+
+</html>
