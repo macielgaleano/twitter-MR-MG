@@ -122,3 +122,8 @@
   flex-direction: row-reverse;
   justify-content: end;
 }
+
+.tweet-display-username {
+  font-weight: 800;
+  margin-right: 10px;
+}
