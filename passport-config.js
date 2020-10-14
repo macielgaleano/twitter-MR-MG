@@ -1,38 +1,34 @@
 const { User } = require("./models/mongoose");
-const passport = require("passport")
+const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const bcrypt = require("bcryptjs");
-
 
 function initialize(passport) {
   passport.use(
     new LocalStrategy(
       { usernameField: "email", passwordField: "password", session: true },
-        (email, password, done) => {
-        User.findOne({  email: email   }).then(async function (user) {
-          // if (err) {
-          //   return done(err);
-          // }
-          if ( user) {
-              if(bcrypt.compareSync(password, user.password)){
-                  console.log(user)
-                  return done(null, user)
-                  
-              } else{
-                done(null, false, { message: "Datos incorrectos" });
-              } 
-  
-            }else {
-                return done(null, false, { message: "Datos incorrectos 2." });
+      (email, password, done) => {
+        User.findOne({ email: email }).then(async (user, err) => {
+          console.log(user);
+          if (err) {
+            return done(err);
+          }
+          if (user) {
+            if (bcrypt.compareSync(password, user.password)) {
+              console.log(user);
+              return done(null, user);
+            } else {
+              done(null, false, { message: "Datos incorrectos" });
             }
-           
-          
+          } else {
+            return done(null, false, { message: "Datos incorrectos 2." });
+          }
         });
       }
     )
   );
- /*  passport.use(
+  /*  passport.use(
     new FacebookStrategy(
       {
         clientID: process.env.FACEBOOK_APP_ID,
@@ -59,8 +55,7 @@ function initialize(passport) {
     )
   ); */
   passport.serializeUser((user, done) => {
-     
-    done(null, user._id.toString() );
+    done(null, user._id.toString());
   });
 
   passport.deserializeUser((id, done) => {

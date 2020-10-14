@@ -15,6 +15,7 @@ const seeder = {
         email: faker.internet.email(),
         description: faker.lorem.words(40),
         avatar: faker.image.avatar(),
+        password: "root",
       });
 
       for (let r = 0; r < 5; r++) {
@@ -26,8 +27,8 @@ const seeder = {
         });
         await tweet.save();
         user.list_tweets.push(tweet);
-        await user.save();
       }
+      await user.save();
     }
     // let users = await db.User.find({});
     // let tweets = await db.Tweet.find({});
