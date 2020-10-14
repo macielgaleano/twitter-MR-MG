@@ -6,6 +6,7 @@ const userSchema = new Schema({
   lastname: String,
   username: String,
   email: String,
+  password: String,
   description: String,
   avatar: String,
   list_tweets: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
