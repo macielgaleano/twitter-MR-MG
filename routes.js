@@ -1,5 +1,5 @@
-const tweetController = require("./controllers/tweet.controller");
 const userController = require("./controllers/user.controller");
+const tweetController = require("./controllers/tweet.controller");
 const seeder = require("./seeder");
 
 const routes = (app) => {
@@ -16,7 +16,7 @@ const routes = (app) => {
 
   //Profile page
 
-  app.post("/:username", (req, res) => {});
+  app.get("/usuario/:username", userController.userPage);
 
   //Crear data
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="/css/userPage.css">
+  <%- include("../partials/head") %>
+
+  <div class="profile-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <img class='img-fluid' src="<%- user.avatar%>" alt="">
+        </div>
+        <div class="col-8">
+          <h1 class="username-head">
+            @<%- user.username %>
+          </h1>
+          <div class="user-name">
+            <%- user.name + ' ' +user.lastname %>
+          </div>
+          <p class="user-description">
+            " <%- user.description %> "
+          </p>
+          <div class="account-info">
+            <small class="followers"><i class="fas fa-users"></i> Seguidores: <spam class="followers-count"> <%-  user.list_users_followers.length
+              %></spam></small>
+            <small class="following">Seguidos: <spam class="followings-count"> <%-  user.list_users_following.length
+              %></spam></small>
+            <small class='email' ><i class=""></i><a class='email' href=""><i class="far fa-envelope"></i> <%-  user.email %></a> </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="svg-border-rounded text-white">
+      <svg
+          xmlns="http://www.w3.org/2000/svg "
+          viewBox="0 0 144.54 17.34 "
+          preserveAspectRatio="none "
+          fill="currentColor "
+      >
+          <path
+          d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0 "
+          />
+      </svg>
+    </div>
+  </div>
+  <div class="tweets ">
+    <h2 class="text-center last-tweets-text">Ultimos tweets subidos:</h2>
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <% for (let i = 0; i < tweets.length; i++) { %>
+          <div class="col-8 mb-5">
+            <div class="row">
+              <div class="col-2">
+                <img class='image img-fluid' src="<%- user.avatar%>" alt="">
+
+              </div>
+              <div class="col-10">
+                <div class="row">
+                  <div class="col-6">
+                    <small class="tweet-display-username">@<%- user.username %>  </small>
+                    <small class="tweet-display-name"><%- user.name + ' ' +user.lastname %></small>
+                  </div>
+                  <div class="col-6 tweet-date mb-2">
+                    <div>
+                      <small><%- tweets[i].date_created.getDay()+'/'+tweets[i].date_created.getMonth()+'/'+tweets[i].date_created.getFullYear() %> <a href=""><i class="fas fa-ellipsis-h"></i></a></small>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <p class="tweet-display-content">
+                      <%- tweets[i].content %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+        <% } %>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  <%- include("../partials/footer") %>
+</body>
+
+</html>

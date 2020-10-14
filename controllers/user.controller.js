@@ -1,10 +1,13 @@
 const db = require("../models/mongoose");
 const faker = require("faker");
-const  {User} = require("../models/mongoose");
+const { User } = require("../models/mongoose");
 const passport = require("passport");
  const bcrypt = require("bcryptjs");
 
 const userController = {
+  showLogin: (req, res) => {
+    res.render("homeWelcome");
+  },
 
     showLoginRegistro: (req, res) => {
         res.render("homeWelcome");
@@ -32,6 +35,19 @@ const userController = {
         failureRedirect: "/login-registro",
         
     }),
-}
+ 
+  userPage: async (req, res) => {
+    console.log(req.params.username);
+    let authorId = await db.User.find({ username: req.params.username }).select(
+      "_id"
+    );
+    res.render("./pages/userPage.ejs", {
+      user: await db.User.findOne({ username: req.params.username }).exec(),
+      tweets: await db.Tweet.find({ author: authorId }).sort({
+        date_created: "desc",
+      }),
+    });
+  },
+};
 
 module.exports = userController;

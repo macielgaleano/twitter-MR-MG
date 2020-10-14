@@ -1,0 +1,129 @@
+.body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.svg-border-rounded svg {
+  bottom: 0;
+  left: 0;
+  height: 3rem;
+  width: 100%;
+}
+
+.profile-box {
+  padding-top: 5rem;
+  background: #ff416c;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+}
+
+.profile-box .container {
+  padding-bottom: 5rem;
+}
+
+.profile-box .username-head {
+  font-family: "Sansita Swashed", cursive;
+  color: white;
+  font-weight: 400;
+  font-size: 3rem;
+}
+
+.profile-box img,
+.image {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 50%;
+  border-color: white;
+}
+
+.profile-boximg img:hover {
+  opacity: 0;
+  border: red;
+}
+
+.profile-box .user-name {
+  color: whitesmoke;
+  font-size: 1.5rem;
+  padding-bottom: 30px;
+  font-weight: 200;
+}
+
+.username-head:hover {
+  animation: colorRotate 6s linear 0s infinite;
+}
+
+@keyframes colorRotate {
+  from {
+    color: rgb(255, 0, 0);
+  }
+  16.6% {
+    color: rgb(255, 0, 255);
+  }
+  33.3% {
+    color: rgb(0, 0, 255);
+  }
+  50% {
+    color: rgb(0, 255, 255);
+  }
+  66.6% {
+    color: rgb(0, 255, 0);
+  }
+  83.3% {
+    color: rgb(255, 255, 0);
+  }
+  to {
+    color: rgb(255, 0, 0);
+  }
+}
+.profile-box .user-description {
+  color: rgb(226, 223, 223);
+  font-size: 1.2rem;
+  text-align: justify;
+  padding-bottom: 20px;
+  font-weight: 300;
+}
+
+.profile-box .account-info .followers {
+  font-size: 1rem;
+  margin-right: 20px;
+  color: white;
+}
+
+.profile-box .account-info .following {
+  font-size: 1rem;
+  margin-right: 60px;
+  color: white;
+}
+.profile-box .account-info .email {
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.profile-box .account-info .followings-count {
+  color: #f2f2f2;
+}
+
+.profile-box .account-info .followers-count {
+  color: #f2f2f2;
+}
+
+.tweets {
+  padding-top: 100px;
+  margin: 0 auto;
+}
+
+.tweets .last-tweets-text {
+  padding-bottom: 50px;
+  font-family: "Sansita Swashed", cursive;
+}
+
+.tweet-date {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: end;
+}
+
+.tweet-display-username {
+  font-weight: 800;
+  margin-right: 10px;
+}
