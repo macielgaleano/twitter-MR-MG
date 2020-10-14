@@ -42,7 +42,7 @@ const seeder = {
               if (error) {
                 console.log(error);
               } else {
-                console.log(success);
+                // console.log(success);
               }
             }
           );
@@ -51,6 +51,41 @@ const seeder = {
     }
 
     //MYSTERY HAT
+    let user_names = [];
+    for (let i = 0; i < users.length; i++) {
+      user_names.push(users[i]._id);
+    }
+    for (let k = 0; k < users.length; k++) {
+      let value = Math.floor(
+        Math.random() * (user_names.length - 1 - 1 + 1) + 1
+      );
+      for (let r = 0; r < value; r++) {
+        if (user_names[r] !== users[k]._id) {
+          db.User.findOneAndUpdate(
+            { _id: users[k]._id },
+            { $push: { list_users_followers: user_names[r] } },
+            (error, success) => {
+              if (error) {
+                console.log(error);
+              } else {
+                // console.log(success);
+              }
+            }
+          );
+          db.User.findOneAndUpdate(
+            { _id: user_names[r] },
+            { $push: { list_users_following: users[k]._id } },
+            (error, success) => {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log(success);
+              }
+            }
+          );
+        }
+      }
+    }
   },
 };
 module.exports = seeder;
