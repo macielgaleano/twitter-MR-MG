@@ -1,4 +1,6 @@
 const tweetController = require("./controllers/tweet.controller");
+const userController = require("./controllers/user.controller");
+//const  User   = require("../models/mongoose");
 
 const routes = (app) => {
   //Home page
@@ -6,10 +8,10 @@ const routes = (app) => {
 
   //Login, register pages
 
-  app.get("/login", (req, res) => {});
-  app.get("/registro", (req, res) => {});
+  app.get("/login", userController.showLogin);
+  app.get("/registro", userController.showLogin);
   app.post("/login", (req, res) => {});
-  app.post("/registro", (req, res) => {});
+  app.post("/registro",  userController.createUser);
 
   //Profile page
 
