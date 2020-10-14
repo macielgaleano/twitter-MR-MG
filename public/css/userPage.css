@@ -116,3 +116,9 @@
   padding-bottom: 50px;
   font-family: "Sansita Swashed", cursive;
 }
+
+.tweet-date {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: end;
+}

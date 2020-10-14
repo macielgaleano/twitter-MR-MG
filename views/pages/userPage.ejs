@@ -55,9 +55,14 @@
               </div>
               <div class="col-10">
                 <div class="row">
-                  <div class="col-12">
-                    <small class="tweet-display-username">@<%- user.username %></small>
+                  <div class="col-6">
+                    <small class="tweet-display-username">@<%- user.username %>  </small>
                     <small class="tweet-display-name"><%- user.name + ' ' +user.lastname %></small>
+                  </div>
+                  <div class="col-6 tweet-date mb-2">
+                    <div>
+                      <small><%- tweets[i].date_created.getDay()+'/'+tweets[i].date_created.getMonth()+'/'+tweets[i].date_created.getFullYear() %> <a href=""><i class="fas fa-ellipsis-h"></i></a></small>
+                    </div>
                   </div>
                   <div class="col-12">
                     <p class="tweet-display-content">
