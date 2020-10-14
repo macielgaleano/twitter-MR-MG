@@ -9,10 +9,10 @@ const routes = (app) => {
   //Login, register pages
 
   app.get("/login-registro", userController.showLoginRegistro);
-  
-  app.post("/registro",  userController.createUser);
+
+  app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
-  app.use("/", isLoggedIn);
+  // app.use("/", isLoggedIn);
 
   //Profile page
 
@@ -26,10 +26,10 @@ const routes = (app) => {
 module.exports = {
   routes,
 };
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect("/login");
-  }
-}
+// function isLoggedIn(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     next();
+//   } else {
+//     res.redirect("/login");
+//   }
+// }

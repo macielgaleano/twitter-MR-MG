@@ -16,7 +16,7 @@ const seeder = {
         description: faker.lorem.words(40),
         avatar: faker.image.avatar(),
       });
-      await user.save();
+
       for (let r = 0; r < 5; r++) {
         let tweet = new db.Tweet({
           content: faker.lorem.words(30),
@@ -25,30 +25,32 @@ const seeder = {
           likes: 1,
         });
         await tweet.save();
+        user.list_tweets.push(tweet);
+        await user.save();
       }
     }
-    let users = await db.User.find({});
-    let tweets = await db.Tweet.find({});
+    // let users = await db.User.find({});
+    // let tweets = await db.Tweet.find({});
 
-    for (let k = 0; k < tweets.length; k++) {
-      for (let i = 0; i < users.length; i++) {
-        // console.log(typeof users[i]._id + " Id user- " + users[i]._id);
-        // console.log(typeof tweets[k].author + " Id autor- " + tweets[k].author);
-        if (String(users[i]._id) === String(tweets[k].author)) {
-          db.User.findOneAndUpdate(
-            { _id: tweets[k].author },
-            { $push: { list_tweets: tweets[k]._id } },
-            (error, success) => {
-              if (error) {
-                console.log(error);
-              } else {
-                // console.log(success);
-              }
-            }
-          );
-        }
-      }
-    }
+    // for (let k = 0; k < tweets.length; k++) {
+    //   for (let i = 0; i < users.length; i++) {
+    //     // console.log(typeof users[i]._id + " Id user- " + users[i]._id);
+    //     // console.log(typeof tweets[k].author + " Id autor- " + tweets[k].author);
+    //     if (String(users[i]._id) === String(tweets[k].author)) {
+    //       db.User.findOneAndUpdate(
+    //         { _id: tweets[k].author },
+    //         { $push: { list_tweets: tweets[k]._id } },
+    //         (error, success) => {
+    //           if (error) {
+    //             console.log(error);
+    //           } else {
+    //             // console.log(success);
+    //           }
+    //         }
+    //       );
+    //     }
+    //   }
+    // }
 
     //MYSTERY HAT
     let user_names = [];
