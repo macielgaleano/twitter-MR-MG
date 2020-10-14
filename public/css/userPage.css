@@ -10,14 +10,14 @@
 }
 
 .profile-box {
-  padding-top: 5rem;
+  padding-top: 4rem;
   background: #ff416c;
   background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
   background: linear-gradient(to right, #ff4b2b, #ff416c);
 }
 
 .profile-box .container {
-  padding-bottom: 5rem;
+  padding-bottom: 4rem;
 }
 
 .profile-box .username-head {
@@ -76,7 +76,7 @@
 }
 .profile-box .user-description {
   color: rgb(226, 223, 223);
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: justify;
   padding-bottom: 20px;
   font-weight: 300;
@@ -126,4 +126,81 @@
 .tweet-display-username {
   font-weight: 800;
   margin-right: 10px;
+}
+/* 
+Vertical nav */
+.sidebarCollapseMenu {
+  position: relative;
+  bottom: 50px;
+  left: 10px;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+}
+
+.separator {
+  margin: 3rem 0;
+  border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+  letter-spacing: 0.1em;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-content: flex-end;
+  margin: 100% 20px;
 }

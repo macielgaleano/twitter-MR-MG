@@ -2,14 +2,18 @@
 <html lang="en">
   <link rel="stylesheet" href="/css/userPage.css">
   <%- include("../partials/head") %>
-
+  <%- include('../partials/verticalNav.ejs') %>
+  
   <div class="profile-box">
+    <button id="sidebarCollapse" type="button" class="sidebarCollapseMenu btn btn-light bg-white  text-center rounded-pill shadow-sm px-4 mb-4 "><i class="fas  fa-cogs mr-2"></i><small class="text-uppercase center font-weight-bold"><%- // user.username %></small></button>
     <div class="container">
-      <div class="row">
-        <div class="col-4">
+      
+      <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-2">
           <img class='img-fluid' src="<%- user.avatar%>" alt="">
         </div>
-        <div class="col-8">
+        <div class="col-6">
           <h1 class="username-head">
             @<%- user.username %>
           </h1>
@@ -26,6 +30,9 @@
               %></spam></small>
             <small class='email' ><i class=""></i><a class='email' href=""><i class="far fa-envelope"></i> <%-  user.email %></a> </small>
           </div>
+        </div>
+        <div class="col-2">
+          
         </div>
       </div>
     </div>
@@ -80,7 +87,7 @@
   
 
 
-
+ 
   <%- include("../partials/footer") %>
 </body>
 

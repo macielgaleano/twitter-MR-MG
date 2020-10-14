@@ -12,7 +12,7 @@ const routes = (app) => {
 
   app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
-  app.use("/", isLoggedIn);
+  // app.use("/", isLoggedIn);
 
   //Profile page
 
@@ -28,13 +28,13 @@ const routes = (app) => {
   });
 };
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect("/login-registro");
-  }
-}
+// function isLoggedIn(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     next();
+//   } else {
+//     res.redirect("/login-registro");
+//   }
+// }
 
 module.exports = {
   routes,
