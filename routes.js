@@ -1,4 +1,5 @@
 const tweetController = require("./controllers/tweet.controller");
+const seeder = require("./seeder");
 
 const routes = (app) => {
   //Home page
@@ -17,7 +18,7 @@ const routes = (app) => {
 
   //Crear data
 
-  app.get("/crearData", tweetController.createTweets);
+  app.get("/creardata", seeder.createTweets);
 };
 
 module.exports = {

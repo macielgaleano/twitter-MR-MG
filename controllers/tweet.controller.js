@@ -1,38 +1,9 @@
 const db = require("../models/mongoose");
 const faker = require("faker");
 const { User } = require("../models/mongoose");
+const { lorem } = require("faker");
 
 const tweetController = {
-  createTweets: async (req, res) => {
-    for (let i = 0; i < 3; i++) {
-      let username = faker.internet.userName();
-
-      let user = new db.User({
-        name: faker.name.firstName(),
-        lastname: faker.name.lastName(),
-        username: username,
-        email: faker.internet.email(),
-        description: faker.lorem.words(40),
-        avatar: faker.image.avatar(),
-        // list_tweets: {},
-        // list_users_following: {},
-        // list_users_followers: {},
-      });
-      await user.save();
-      let tweet = new db.Tweet({
-        content: faker.lorem.words(30),
-        author: user._id,
-        date_created: faker.date.past(),
-        likes: 1,
-      });
-      await tweet.save();
-    }
-    let users = await db.User.find({});
-    users.forEach((user) => {
-      console.log(user);
-    });
-  },
-
   allTweets: async (req, res) => {
     res.json(await db.Tweet.find({}));
   },
