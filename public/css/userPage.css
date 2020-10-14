@@ -27,7 +27,8 @@
   font-size: 3rem;
 }
 
-.profile-box img {
+.profile-box img,
+.image {
   width: 80%;
   margin: 0 auto;
   border-radius: 50%;
@@ -104,4 +105,14 @@
 
 .profile-box .account-info .followers-count {
   color: #f2f2f2;
+}
+
+.tweets {
+  padding-top: 100px;
+  margin: 0 auto;
+}
+
+.tweets .last-tweets-text {
+  padding-bottom: 50px;
+  font-family: "Sansita Swashed", cursive;
 }
