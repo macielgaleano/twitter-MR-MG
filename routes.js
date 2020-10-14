@@ -12,13 +12,11 @@ const routes = (app) => {
 
   app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
-  // app.use("/", isLoggedIn);
+  app.use("/", isLoggedIn);
 
   //Profile page
 
-  app.get("/usuario/:username", userController.userPage);
-
-  //Crear data
+  app.get("/usuario/:username", isLoggedIn, userController.userPage);
 
   app.get("/creardata", seeder.createTweets);
 
@@ -28,13 +26,13 @@ const routes = (app) => {
   });
 };
 
-// function isLoggedIn(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     next();
-//   } else {
-//     res.redirect("/login-registro");
-//   }
-// }
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect("/login-registro");
+  }
+}
 
 module.exports = {
   routes,

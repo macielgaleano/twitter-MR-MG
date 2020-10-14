@@ -1,8 +1,12 @@
-<div class="vertical-nav bg-white" id="sidebar">
-  <div class="py-4 px-3 mb-4 bg-light">
-    <div class="media d-flex align-items-center">
-      <img src="<%- user.avatar%>"" alt="..." width="65" class="mr-3
-      rounded-circle img-thumbnail shadow-sm" />
+<div class="vertical-nav bg-white mr-4" id="sidebar">
+  <div class="py-4 px-3 mb-4 mr-4 bg-light">
+    <div class="media d-flex align-items-center mr-4">
+      <img
+        src="<%- user.avatar%>"
+        alt="..."
+        width="65"
+        class="mr-3 rounded-circle img-thumbnail shadow-sm"
+      />
       <div class="media-body">
         <h4 class="m-0">@<%- user.username %></h4>
         <p class="font-weight-light text-muted mb-0">
@@ -19,7 +23,7 @@
   <ul class="nav flex-column bg-white mb-0">
     <li class="nav-item">
       <a href="#" class="nav-link text-dark font-italic bg-light">
-        <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+        <i class="fa fa-th-large mr-3 text-danger fa-fw"></i>
         Home
       </a>
     </li>
@@ -32,13 +36,13 @@
   <ul class="nav flex-column bg-white mb-0">
     <li class="nav-item">
       <a href="#" class="nav-link text-dark font-italic">
-        <i class="fa fa-area-chart mr-3 text-primary fa-fw danger"></i>
+        <i class="fa fa-area-chart mr-3 text-danger fa-fw danger"></i>
         Test
       </a>
     </li>
     <li class="nav-item">
       <a href="#" class="nav-link text-dark font-italic">
-        <i class="fa fa-bar-chart mr-3 text-primary fa-fw"></i>
+        <i class="fa fa-bar-chart mr-3 text-danger fa-fw"></i>
         Test
       </a>
     </li>
@@ -56,7 +60,7 @@
       id="sidebarCollapse"
       type="button"
       class="btn btn-danger rounded-pill shadow-sm px-4 mb-4"
-      onclick="location.href='/location'"
+      onclick="location.href='/logout'"
     >
       <i class="fas fa-sign-out-alt"></i>
       <small class="text-uppercase font-weight-bold">Cerrar session</small>

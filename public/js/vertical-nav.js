@@ -6,7 +6,7 @@ $(function () {
     $(".sidebarCollapseMenu").hide();
   });
   $("#sidebarCollapse").on("click", function () {
-    $("#sidebar, #content").hide("slide", { direction: "right" }, 1000);
+    $("#sidebar, #content").hide("slide", { direction: "left" }, 1000);
     $(".sidebarCollapseMenu").show();
   });
 });
