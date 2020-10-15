@@ -18,6 +18,10 @@ const routes = (app) => {
 
   app.get("/usuario/:username", isLoggedIn, userController.userPage);
 
+  //Delete article
+
+  app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
+
   app.get("/creardata", seeder.createTweets);
 
   app.get("/logout", (req, res) => {

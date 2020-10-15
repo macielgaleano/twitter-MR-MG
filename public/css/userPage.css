@@ -130,7 +130,7 @@
 /* 
 Vertical nav */
 .sidebarCollapseMenu {
-  position: relative;
+  position: fixed;
   bottom: 50px;
   left: 10px;
 }
@@ -141,7 +141,6 @@ Vertical nav */
 
 .vertical-nav {
   min-width: 17rem;
-  width: 17rem;
   height: 100vh;
   position: fixed;
   top: 0;

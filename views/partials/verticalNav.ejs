@@ -1,6 +1,6 @@
-<div class="vertical-nav bg-white mr-4" id="sidebar">
-  <div class="py-4 px-3 mb-4 mr-4 bg-light">
-    <div class="media d-flex align-items-center mr-4">
+<div class="vertical-nav bg-white pr-2" id="sidebar">
+  <div class="py-4 px-3 mb-4 bg-light">
+    <div class="media d-flex align-items-center">
       <img
         src="<%- req.user.avatar%>"
         alt="..."
@@ -22,9 +22,16 @@
 
   <ul class="nav flex-column bg-white mb-0">
     <li class="nav-item">
+      <a
+        href="/usuario/<%- req.user.username %>"
+        class="nav-link text-dark font-italic bg-light"
+      >
+        <i class="fa fa-home mr-3 text-danger fa-fw"></i>
+        Mi perfil
+      </a>
       <a href="#" class="nav-link text-dark font-italic bg-light">
         <i class="fa fa-th-large mr-3 text-danger fa-fw"></i>
-        Home
+        Inicio
       </a>
     </li>
   </ul>

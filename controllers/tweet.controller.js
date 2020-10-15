@@ -7,6 +7,12 @@ const tweetController = {
   allTweets: async (req, res) => {
     res.json(await db.Tweet.find({}));
   },
+  delete: async (req, res) => {
+    db.Tweet.deleteOne({ _id: req.params.tweetId }, function (err) {
+      if (err) return handleError(err);
+      // deleted at most one tank document
+    });
+  },
 };
 
 module.exports = tweetController;
