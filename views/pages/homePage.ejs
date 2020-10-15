@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <link rel="stylesheet" href="/css/userPage.css">
-  <%- include("../partials/head") %>
+  <%- include("../partials/head-home") %>
   <%- include('../partials/verticalNav.ejs') %>
   
   <button id="sidebarCollapse" type="button" class="sidebarCollapseMenu btn btn-danger text-white  text-center rounded-pill shadow-sm px-4 mb-4 "><i class="fas  fa-cogs mr-2"></i><small class="text-uppercase center font-weight-bold"><%- // user.username %></small></button>
@@ -11,8 +11,8 @@
     <div class="container">
       <h2 class="text-center pt-5 last-tweets-text">Ultimos tweets subidos:</h2>
       <div class="row d-flex justify-content-center">
-        <% for (let i = 0; i < tweets.length; i++) { %>
-          <div class="col-12 mb-5">
+        <% for (let i = 0; i < 20; i++) { %>
+          <div class="col-9 mb-5">
             <div class="row">
               <div class="col-2">
                 <img class='image img-fluid' src="<%- tweets[i].author.avatar%>" alt="">
@@ -46,8 +46,31 @@
             </div>
           </div> 
         <% } %>
+        
       </div>
+      <nav aria-label="..." class="center d-flex justify-content-center pb-4">
+        <ul class="pagination center text-danger">
+          <li class="page-item disabled text-danger">
+            <a class="page-link text-danger" href="#" tabindex="-1">Previous</a>
+          </li>
+          <% let tweets_for_row = 20 %>
+          <% let tweets_total = tweets.length %>
+          <% let pages = Math.trunc(tweets_total / tweets_for_row)%>
+          <% if ((tweets_total) % 20 !== 0) { pages + 1 }  %>
+          <% for (let i = 1; i < pages+1; i++) { %>
+
+            <li class="page-item"><a class="page-link text-danger pagination-item" href="/home/<%- i %>"><%- i %></a></li>
+          
+          
+          <% } %>
+
+          <li class="page-item">
+            <a class="page-link text-danger" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
     </div>
+    
   </div>
  
   <%- include("../partials/footer") %>
