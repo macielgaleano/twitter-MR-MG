@@ -4,7 +4,9 @@ const seeder = require("./seeder");
 
 const routes = (app) => {
   //Home page
+  app.get("/welcome", userController.welcome)
   app.get("/", tweetController.allTweets);
+  
 
   //Login, register pages
 
@@ -13,6 +15,9 @@ const routes = (app) => {
   app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
   app.use("/", isLoggedIn);
+  app.get("/auth/facebook/callback", userController.facebookLogin);
+  app.get("/auth/facebook", userController.facebookAuth);
+  
   //Profile page
   app.get("/usuario/:username", isLoggedIn, userController.userPage);
   app.get("/usuario/:username/like", isLoggedIn, userController.like);

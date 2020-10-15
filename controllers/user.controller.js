@@ -5,12 +5,15 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 
 const userController = {
-  showLogin: (req, res) => {
+  welcome: (req, res) => {
     res.render("homeWelcome");
+  },
+  showLogin: (req, res) => {
+    res.render("homeLogin");
   },
 
   showLoginRegistro: (req, res) => {
-    res.render("homeWelcome");
+    res.render("homeLogin");
   },
   like: async (req, res) => {
     let user = await db.User.find({ username: req.params.username });
@@ -33,6 +36,11 @@ const userController = {
     successRedirect: "/",
     failureRedirect: "/login-registro",
   }),
+  facebookLogin: passport.authenticate("facebook", {
+    successRedirect: "/",
+    failureRedirect: "/login-registro",
+  }),
+  facebookAuth: passport.authenticate("facebook", { scope: "email" }),
 
   userPage: async (req, res) => {
     let authorId = await db.User.find({ username: req.params.username }).select(
