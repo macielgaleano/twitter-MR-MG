@@ -108,7 +108,6 @@
 }
 
 .tweets {
-  padding-top: 100px;
   margin: 0 auto;
 }
 
@@ -202,4 +201,17 @@ Vertical nav */
   justify-content: end;
   align-content: flex-end;
   margin: 100% 20px;
+}
+
+.text-area {
+  width: 100%;
+  border: rgb(39, 36, 36) solid 2px;
+  border-radius: 5px;
+}
+
+.text-area:focus {
+  border: rgb(197, 48, 48) solid 2px;
+}
+
+.btn-send {
 }
