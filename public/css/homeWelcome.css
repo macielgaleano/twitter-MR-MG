@@ -1,0 +1,18 @@
+#background {
+    background: rgb(252,81,48);
+background: linear-gradient(90deg, rgba(252,81,48,1) 0%, rgba(252,111,84,1) 55%, rgba(252,136,114,1) 100%);
+}
+#titleWelcome{
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: emoji;
+color: white;
+
+}
+
+#button-welcome {
+background-color: white;
+color: rgba(252,81,48,1) ;
+
+}

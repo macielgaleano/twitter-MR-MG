@@ -1,100 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include("partials/head") %>
+  <body id="background">
+    <h1 id="titleWelcome">Welcome to Maciel and Mikaela's Twitter</h1>
+    <button
+      onclick="location.href='/login-registro'"
+      class="mt-5"
+      id="button-welcome"
+    >
+      Get in
+    </button>
 
-  <body>
-    <div class="container center" id="container">
-      <div class="form-container sign-up-container">
-        <form action="/registro" method="POST">
-          <h1>Create Account</h1>
-          <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <!-- <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
-          </div>
-          <span>or use your email for registration</span>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            placeholder="Name"
-          />
-          <input
-            type="text"
-            class="form-control"
-            id="lastname"
-            name="lastname"
-            placeholder="Lastname"
-          />
-          <input
-            type="text"
-            name="username"
-            class="form-control"
-            id="username"
-            placeholder="Username"
-          />
-          <input
-            type="email"
-            name="email"
-            class="form-control"
-            id="email"
-            placeholder="Email"
-          />
-          <input
-            type="password"
-            name="password"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-          />
-          <button type="submit" class="mb-1">Sign Up</button>
-        </form>
-      </div>
-      <div class="form-container sign-in-container">
-        <form action="/login" method="POST">
-          <h1>Sign in</h1>
-          <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <!-- 	<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
-          </div>
-          <span>or use your account</span>
-          <input
-            type="email"
-            name="email"
-            class="form-control"
-            id="email"
-            placeholder="Email or Username"
-          />
-          <input
-            type="password"
-            name="password"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-          />
-
-          <button>Sign In</button>
-        </form>
-      </div>
-      <div class="overlay-container">
-        <div class="overlay">
-          <div class="overlay-panel overlay-left">
-            <h1>Welcome Back!</h1>
-            <p>
-              To keep connected with us please login with your personal info
-            </p>
-            <button class="ghost" id="signIn">Sign In</button>
-          </div>
-          <div class="overlay-panel overlay-right">
-            <h1>Hello, Friend!</h1>
-            <p>Enter your personal details and start comunicate with us</p>
-            <button class="ghost" id="signUp">Sign Up</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <%- include("partials/footer") %>
   </body>
 </html>

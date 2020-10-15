@@ -26,7 +26,7 @@ function initialize(passport) {
       }
     )
   );
-  /*  passport.use(
+  passport.use(
     new FacebookStrategy(
       {
         clientID: process.env.FACEBOOK_APP_ID,
@@ -35,23 +35,28 @@ function initialize(passport) {
         profileFields: ["first_name", "last_name", "email"],
       },
       function (accessToken, refreshToken, profile, done) {
-        console.log(profile);
-        User.findOrCreate({
-          where: { email: profile._json.email },
-          defaults: {
-            firstname: profile._json.first_name,
+        User.findOne({email: profile._json.email }, function(err,user){
+          if(err) throw(err);
+          if(!err && user!= null){
+          console.log('user != null');
+          return done(null, user);
+          }
+          let userFacebook = new User({
+            name: profile._json.first_name,
             lastname: profile._json.last_name,
-            password: "holamundo",
-          },
-        })
-          .then(function (user) {
-            console.log("USUARIO:", user[0]);
-            done(null, user[0]);
+            password:"holamundo", 
           })
-          .catch((error) => console.log("Ahhhhhhhhh"));
+          userFacebook.save(function(err) {
+            if(err) throw err;
+            console.log('ok');
+            done(null, user);
+            });
+        }) 
+     
       }
     )
-  ); */
+  ); 
+
   passport.serializeUser((user, done) => {
     done(null, user._id.toString());
   });
