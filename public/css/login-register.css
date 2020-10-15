@@ -156,6 +156,12 @@ input {
   transform: translateX(-100%);
 }
 
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 .overlay {
   background: #ff416c;
   background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
