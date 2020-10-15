@@ -3,6 +3,7 @@ const faker = require("faker");
 const { User } = require("../models/mongoose");
 const { lorem } = require("faker");
 const { post } = require("../models/User");
+const path = require("path");
 
 const tweetController = {
   allTweets: async (req, res) => {
@@ -11,9 +12,26 @@ const tweetController = {
   delete: async (req, res) => {
     db.Tweet.deleteOne({ _id: req.params.tweetId }, function (err) {
       if (err) return handleError(err);
-      // deleted at most one tank document
+      res.redirect("/");
     });
   },
+  deleteUser: async (req, res) => {
+    db.Tweet.deleteOne({ _id: req.params.tweetId }, function (err) {
+      if (err) return handleError(err);
+      res.redirect("/usuario/" + req.user.username);
+    });
+  },
+  createTweets: async (req, res) => {
+    const tweet = new db.Tweet({
+      content: req.body.content_text,
+      author: req.user._id,
+      date_created: Date.now(),
+      likes: 0,
+    });
+    await tweet.save();
+    res.redirect("/");
+  },
+
   homeFirst: async (req, res) => {
     let user = req.user._id;
     let followings = await db.User.findOne({
@@ -36,7 +54,6 @@ const tweetController = {
           })
           .populate("author")
           .exec(function (err, posts) {
-            console.log(posts.length);
             res.render("./pages/homePage.ejs", { req: req, tweets: posts });
           });
       });

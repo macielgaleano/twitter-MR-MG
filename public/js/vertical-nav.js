@@ -10,3 +10,10 @@ $(function () {
     $(".sidebarCollapseMenu").show();
   });
 });
+
+$(".heart").on("click", function (event) {
+  console.log("click");
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+  $(this).addClass("text-danger");
+});
