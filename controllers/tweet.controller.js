@@ -28,7 +28,7 @@ const tweetController = {
           .sort({
             date_created: "desc",
           })
-          .limit(1)
+          .limit(20)
           .populate("author")
           .exec(function (err, posts) {
             console.log(posts);
