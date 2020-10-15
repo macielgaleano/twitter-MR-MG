@@ -9,7 +9,8 @@ const routes = (app) => {
 
   app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
-  app.use("/", isLoggedIn, tweetController.home);
+  app.get("/home/:id", isLoggedIn, tweetController.home);
+  app.use("/", isLoggedIn, tweetController.homeFirst);
   //Profile page
   app.get("/usuario/:username", isLoggedIn, userController.userPage);
   app.get("/usuario/:username/like", isLoggedIn, userController.like);

@@ -14,7 +14,35 @@ const tweetController = {
       // deleted at most one tank document
     });
   },
+  homeFirst: async (req, res) => {
+    let user = req.user._id;
+    let followings = await db.User.findOne({
+      username: req.user.username,
+    })
+      .select("list_users_following")
+      .exec(async (err, posts) => {
+        let tweets = db.Tweet.find({
+          $or: [
+            { author: user },
+            {
+              author: {
+                $in: posts.list_users_following,
+              },
+            },
+          ],
+        })
+          .sort({
+            date_created: "desc",
+          })
+          .populate("author")
+          .exec(function (err, posts) {
+            console.log(posts.length);
+            res.render("./pages/homePage.ejs", { req: req, tweets: posts });
+          });
+      });
+  },
   home: async (req, res) => {
+    console.log(req.params);
     let followings = await db.User.findOne({
       username: req.user.username,
     })
@@ -29,12 +57,11 @@ const tweetController = {
             date_created: "desc",
           })
           .populate("author")
+          .limit(20 * req.params.id)
           .exec(function (err, posts) {
-            console.log(posts);
             res.render("./pages/homePage.ejs", { req: req, tweets: posts });
           });
       });
-    db.Tweet();
   },
 };
 
