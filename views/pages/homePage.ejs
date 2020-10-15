@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="/css/userPage.css">
+  <%- include("../partials/head") %>
+  <%- include('../partials/verticalNav.ejs') %>
+  
+  <button id="sidebarCollapse" type="button" class="sidebarCollapseMenu btn btn-danger text-white  text-center rounded-pill shadow-sm px-4 mb-4 "><i class="fas  fa-cogs mr-2"></i><small class="text-uppercase center font-weight-bold"><%- // user.username %></small></button>
+
+  <div class="tweets ">
+
+    <div class="container">
+      <h2 class="text-center pt-5 last-tweets-text">Ultimos tweets subidos:</h2>
+      <div class="row d-flex justify-content-center">
+        <% for (let i = 0; i < tweets.length; i++) { %>
+          <div class="col-12 mb-5">
+            <div class="row">
+              <div class="col-2">
+                <img class='image img-fluid' src="<%- tweets[i].author.avatar%>" alt="">
+
+              </div>
+              <div class="col-10 mb-3">
+                <div class="row">
+                  <div class="col-6">
+                    <a class="tweet-display-username text-danger" href='/usuario/<%- tweets[i].author.username %> '>@<%- tweets[i].author.username %>  </a>
+                    <small class="tweet-display-name"><%- tweets[i].author.name + ' ' +tweets[i].author.lastname %></small>
+                  </div>
+                  <div class="col-6 tweet-date mb-2">
+                    <div>
+                      <small><%- tweets[i].date_created.getDate()+'/'+(tweets[i].date_created.getMonth()+ 1 ) +'/'+tweets[i].date_created.getFullYear() + ' - ' +tweets[i].date_created.getHours() + ':' + tweets[i].date_created.getMinutes()%> 
+                        <% if(tweets[i].author.username === req.user.username) {%>
+                          <a href="/usuario/<%- tweets[i]._id %>/borrar" data-toggle="tooltip" data-placement="right" title="Eliminar publicacion"><i class="ml-1 fas fa-trash text-danger" ></i> </a>
+                        <% } %>
+                       </small>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <p class="tweet-display-content">
+                      <%- tweets[i].content %>
+                    </p>
+                  </div>
+                  <div class="col-12 tweet-date mb-3">
+                    <i class="fa fa-heart" aria-hidden="true"></i><small class="mr-1"> Me gusta </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+        <% } %>
+      </div>
+    </div>
+  </div>
+ 
+  <%- include("../partials/footer") %>
+</body>
+
+</html>
