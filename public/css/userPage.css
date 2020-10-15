@@ -130,8 +130,8 @@
 Vertical nav */
 .sidebarCollapseMenu {
   position: fixed;
-  bottom: 50px;
-  left: 10px;
+  bottom: -10px;
+  left: 5px;
 }
 
 .center {

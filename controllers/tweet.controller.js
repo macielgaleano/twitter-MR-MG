@@ -23,7 +23,7 @@ const tweetController = {
   },
   createTweets: async (req, res) => {
     const tweet = new db.Tweet({
-      content: req.body.content,
+      content: req.body.content_text,
       author: req.user._id,
       date_created: Date.now(),
       likes: 0,
