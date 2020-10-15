@@ -12,7 +12,9 @@ const userController = {
   showLoginRegistro: (req, res) => {
     res.render("homeWelcome");
   },
-
+  like: async (req, res) => {
+    let user = await db.User.find({ username: req.params.username });
+  },
   createUser: async (req, res) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     const user = await new User({

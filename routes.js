@@ -13,15 +13,11 @@ const routes = (app) => {
   app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
   app.use("/", isLoggedIn);
-
   //Profile page
-
   app.get("/usuario/:username", isLoggedIn, userController.userPage);
-
+  app.get("/usuario/:username/like", isLoggedIn, userController.like);
   //Delete article
-
   app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
-
   app.get("/creardata", seeder.createTweets);
 
   app.get("/logout", (req, res) => {
