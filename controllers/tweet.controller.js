@@ -14,6 +14,17 @@ const tweetController = {
       // deleted at most one tank document
     });
   },
+  createTweets: async (req, res) => {
+    const tweet = new db.Tweet({
+      content: req.body.content,
+      author: req.user._id,
+      date_created: Date.now(),
+      likes: 0,
+    });
+    await tweet.save();
+    res.redirect("/");
+  },
+
   homeFirst: async (req, res) => {
     let user = req.user._id;
     let followings = await db.User.findOne({
@@ -36,7 +47,6 @@ const tweetController = {
           })
           .populate("author")
           .exec(function (err, posts) {
-            console.log(posts.length);
             res.render("./pages/homePage.ejs", { req: req, tweets: posts });
           });
       });

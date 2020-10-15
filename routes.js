@@ -4,19 +4,18 @@ const seeder = require("./seeder");
 
 const routes = (app) => {
   //Login, register pages
-
+  app.get("/usuario/:username", isLoggedIn, userController.userPage);
   app.get("/login-registro", userController.showLoginRegistro);
-
+  app.get("/usuario/:username/like", isLoggedIn, userController.like);
+  //Delete article
+  app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
+  app.get("/creardata", isLoggedIn, seeder.createTweets);
+  app.post("/tweet/crear", tweetController.createTweets);
   app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
   app.get("/home/:id", isLoggedIn, tweetController.home);
   app.use("/", isLoggedIn, tweetController.homeFirst);
   //Profile page
-  app.get("/usuario/:username", isLoggedIn, userController.userPage);
-  app.get("/usuario/:username/like", isLoggedIn, userController.like);
-  //Delete article
-  app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
-  app.get("/creardata", seeder.createTweets);
 
   app.get("/logout", (req, res) => {
     req.logout();
