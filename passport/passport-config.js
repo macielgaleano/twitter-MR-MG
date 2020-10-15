@@ -10,13 +10,11 @@ function initialize(passport) {
       { usernameField: "email", passwordField: "password", session: true },
       (email, password, done) => {
         User.findOne({ email: email }).then(async (user, err) => {
-          console.log(user);
           if (err) {
             return done(err);
           }
           if (user) {
             if (bcrypt.compareSync(password, user.password)) {
-              console.log(user);
               return done(null, user);
             } else {
               done(null, false, { message: "Datos incorrectos" });
@@ -61,7 +59,6 @@ function initialize(passport) {
   passport.deserializeUser((id, done) => {
     User.findById(id)
       .then((user) => {
-        console.log("Hola 2");
         done(null, user);
       })
       .catch((error) => {
