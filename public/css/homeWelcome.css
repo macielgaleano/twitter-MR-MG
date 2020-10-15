@@ -6,11 +6,9 @@ background: linear-gradient(90deg, rgba(252,81,48,1) 0%, rgba(252,111,84,1) 55%,
 display: flex;
 justify-content: center;
 align-items: center;
-    font-family: emoji;
 color: white;
-
+font-family: emoji;
 }
-
 #button-welcome {
 background-color: white;
 color: rgba(252,81,48,1) ;
