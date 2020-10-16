@@ -61,7 +61,6 @@ const tweetController = {
           })
           .populate("author")
           .exec(function (err, posts) {
-            console.log(posts);
             res.render("./pages/homePage.ejs", {
               req: req,
               tweets: posts,

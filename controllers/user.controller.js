@@ -12,6 +12,25 @@ const userController = {
     res.render("homeLogin");
   },
 
+  possibleFollowers: async (req, res) => {
+    let users = await db.User.find({}).select("_id");
+    let users_id = [];
+    users.forEach((user) => {
+      users_id.push(user._id);
+    });
+    console.log(users_id);
+    let foollowing = await db.User.find({
+      list_users_following: {
+        $nin: users_id,
+      },
+    })
+      .limit(10)
+      .exec((err, items) => {
+        res.json(items);
+      });
+    console.log(await foollowing);
+  },
+
   showLoginRegistro: (req, res) => {
     res.render("homeLogin");
   },
@@ -26,10 +45,11 @@ const userController = {
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword, //?
-      avatar: "Sin imagen",
+      avatar: "/images/anonimo.png",
       list_tweets: [],
       list_users_following: [],
       list_users_followers: [],
+      description: "Suba una nueva descripcion en configuracion",
     });
     user
       .save()

@@ -21,6 +21,7 @@ const routes = (app) => {
   app.post("/tweet/crear", tweetController.createTweets);
   app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
+  app.get("/possibleFollowers", isLoggedIn, userController.possibleFollowers);
 
   app.get("/auth/facebook/callback", userController.facebookLogin);
   app.get("/auth/facebook", userController.facebookAuth);
