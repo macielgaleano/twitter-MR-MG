@@ -26,7 +26,7 @@ const userController = {
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword, //?
-      avatar: 1,
+      avatar: "Sin imagen",
       list_tweets: [],
       list_users_following: [],
       list_users_followers: [],

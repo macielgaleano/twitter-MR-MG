@@ -29,6 +29,13 @@ const tweetController = {
       likes: 0,
     });
     await tweet.save();
+    const tweet_saved = db.Tweet.findOne({ content: req.body.content_text });
+    const userTweet = db.User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $push: { list_tweets: tweet_saved } }
+    ).exec(function (err, posts) {
+      console.log(posts);
+    });
     res.redirect("/");
   },
 
@@ -55,7 +62,11 @@ const tweetController = {
           .populate("author")
           .exec(function (err, posts) {
             console.log(posts);
-            res.render("./pages/homePage.ejs", { req: req, tweets: posts });
+            res.render("./pages/homePage.ejs", {
+              req: req,
+              tweets: posts,
+              flag: false,
+            });
           });
       });
   },
