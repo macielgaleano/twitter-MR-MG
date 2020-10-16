@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="/css/userPage.css">
+  <%- include("../partials/head-home") %>
+  <%- include('../partials/verticalNav.ejs') %>
+
+  <button id="sidebarCollapse" type="button" class="sidebarCollapseMenu btn btn-danger text-white  text-center rounded-pill shadow-sm px-4 mb-4 "><i class="fas  fa-cogs mr-2"></i><small class="text-uppercase center font-weight-bold"><%- // user.username %></small></button>
+
+  <div class="container">
+  <form class='' action="/configuracion" method="post" enctype="multipart/form-data">
+      <h2 class="text-center pt-5 last-tweets-text" >Modifica tus datos:</h2>
+      <div class="row d-flex justify-content-center">
+        
+        <div class="col-8">
+          <div class="row">
+            <div class="col-4">
+              <img class='image' src="<%-req.user.avatar %>" alt="">
+            </div>
+            <div class="col-2"></div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for=""></label>
+                <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
+                <small id="fileHelpId" class="form-text text-muted">Ingrese una imagen formato .jpg o .png</small>
+              </div>
+            </div>
+            <div class="col-6">
+              <label class='mr-3' for="name" >Nombre de usuario actual:</label>
+              "<%- req.user.username %>"
+            </div>
+            <div class="col-6">
+              <input name='username' id='username' placeholder='Ingrese un nombre de usuario...' type="text">
+            </div>
+            <div class="col-6">
+              <label class='mr-3' for="name" >Nombre actual:</label>
+              "<%- req.user.name %>"
+            </div>
+            <div class="col-6">
+              <input name='name' id='name' placeholder='Ingrese el nombre...' type="text">
+            </div>
+            <div class="col-6">
+              <label class='mr-3' for="lastname" >Apellido actual:</label>
+              "<%- req.user.lastname %>"
+            </div>
+            <div class="col-6">
+              <input name='lastname' id='lastname' placeholder='Ingrese el apellido...' type="text">
+            </div>
+            <div class="col-6">
+              <label class='mr-3' for="lastname" >Descripcion actual:</label>
+              <p>
+                "<%- req.user.description %>"
+              </p>
+             
+            </div>
+            <div class="col-6">
+              <textarea name="description" id="description" cols="30" rows="10" placeholder='ingrese una descripcion'></textarea>
+            </div>
+            <div class="col-6">
+              <label class='mr-3' for="password" >Nueva contraseña:</label>
+            </div>
+            <div class="col-6">
+              <input type="password" placeholder='Ingrese su contraseña...'>
+              <input type="password" placeholder='Repita su contraseña...'>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+        
+  </form>
+</div>  
+
+  <%- include("../partials/footer") %>
+</body>
+
+</html>

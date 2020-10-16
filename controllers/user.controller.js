@@ -78,6 +78,9 @@ const userController = {
       req: req,
     });
   },
+  configuration: (req, res) => {
+    res.render("./pages/configurationPage.ejs", { req: req });
+  },
 };
 
 module.exports = userController;
