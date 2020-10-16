@@ -52,7 +52,7 @@
     </div>
   </div>
 
-
+  
 
   <div class="tweets ">
     <h2 class="text-center last-tweets-text mt-4">Ultimos tweets subidos:</h2>
@@ -109,41 +109,42 @@
           </div>
         <% } %>
 
+        <% if(tweets) {%>
+          <% for (let i = 0; i < tweets.length; i++) { %>
+            <div class="col-8 mb-5">
+              <div class="row">
+                <div class="col-2">
+                  <img class='image img-fluid' src="<%- user.avatar%>" alt="">
 
-        <% for (let i = 0; i < tweets.length; i++) { %>
-          <div class="col-8 mb-5">
-            <div class="row">
-              <div class="col-2">
-                <img class='image img-fluid' src="<%- user.avatar%>" alt="">
-
-              </div>
-              <div class="col-10 mb-3">
-                <div class="row">
-                  <div class="col-6">
-                    <a class="tweet-display-username text-danger" href='/usuario/<%- user.username %> '>@<%- user.username %>  </a>
-                    <small class="tweet-display-name"><%- user.name + ' ' +user.lastname %></small>
-                  </div>
-                  <div class="col-6 tweet-date mb-2">
-                    <div>
-                      <small><%- tweets[i].date_created.getDate()+'/'+(tweets[i].date_created.getMonth()+ 1 ) +'/'+tweets[i].date_created.getFullYear() + ' - ' +tweets[i].date_created.getHours() + ':' + tweets[i].date_created.getMinutes()%> 
-                        <% if(user.username === req.user.username) {%>
-                          <a href="/usuario/<%- tweets[i]._id %>/borrar/user" data-toggle="tooltip" data-placement="right" title="Eliminar publicacion"><i class="ml-1 fas fa-trash text-danger" ></i> </a>
-                        <% } %>
-                       </small>
+                </div>
+                <div class="col-10 mb-3">
+                  <div class="row">
+                    <div class="col-6">
+                      <a class="tweet-display-username text-danger" href='/usuario/<%- user.username %> '>@<%- user.username %>  </a>
+                      <small class="tweet-display-name"><%- user.name + ' ' +user.lastname %></small>
                     </div>
-                  </div>
-                  <div class="col-12">
-                    <p class="tweet-display-content">
-                      <%- tweets[i].content %>
-                    </p>
-                  </div>
-                  <div class="col-12 tweet-date mb-3 heart">
-                    <i class="fa fa-heart heart" aria-hidden="true"></i><small class="mr-1 heart"> Me gusta </small>
+                    <div class="col-6 tweet-date mb-2">
+                      <div>
+                        <small><%- tweets[i].date_created.getDate()+'/'+(tweets[i].date_created.getMonth()+ 1 ) +'/'+tweets[i].date_created.getFullYear() + ' - ' +tweets[i].date_created.getHours() + ':' + tweets[i].date_created.getMinutes()%> 
+                          <% if(user.username === req.user.username) {%>
+                            <a href="/usuario/<%- tweets[i]._id %>/borrar/user" data-toggle="tooltip" data-placement="right" title="Eliminar publicacion"><i class="ml-1 fas fa-trash text-danger" ></i> </a>
+                          <% } %>
+                        </small>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <p class="tweet-display-content">
+                        <%- tweets[i].content %>
+                      </p>
+                    </div>
+                    <div class="col-12 tweet-date mb-3 heart">
+                      <i class="fa fa-heart heart" heart-id=<%- i %> aria-hidden="true"></i><small class="mr-1 heart"> Me gusta </small>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div> 
+          <% } %>
         <% } %>
       </div>
     </div>

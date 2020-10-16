@@ -8,6 +8,8 @@
 
   <div class="tweets ">
 
+    <%- tweets.author %>
+    <% if(tweets == []) {%>
     <div class="container">
       <h2 class="text-center pt-5 last-tweets-text">Ultimos tweets subidos:</h2>
       <div class="row d-flex justify-content-center">
@@ -39,7 +41,7 @@
                     </p>
                   </div>
                   <div class="col-12 tweet-date mb-3">
-                    <i class="fa fa-heart" aria-hidden="true"></i><small class="mr-1"> Me gusta </small>
+                    <i class="fa fa-heart" heart-id=<%- i %> aria-hidden="true"></i><small class="mr-1"> Me gusta </small>
                   </div>
                 </div>
               </div>
@@ -59,7 +61,7 @@
           <% if ((tweets_total) % 20 !== 0) { pages + 1 }  %>
           <% for (let i = 1; i < pages+1; i++) { %>
 
-            <li class="page-item"><a class="page-link text-danger pagination-item" href="/home/<%- i %>"><%- i %></a></li>
+            <li class="page-item"><a class="page-link text-danger pagination-item" href="/home/<%- i %>/ver"><%- i %></a></li>
           
           
           <% } %>
@@ -70,7 +72,7 @@
         </ul>
       </nav>
     </div>
-    
+     <% } %>
   </div>
  
   <%- include("../partials/footer") %>

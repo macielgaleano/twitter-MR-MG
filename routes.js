@@ -25,8 +25,6 @@ const routes = (app) => {
   app.get("/auth/facebook/callback", userController.facebookLogin);
   app.get("/auth/facebook", userController.facebookAuth);
 
-  app.get("/home/:id", isLoggedIn, tweetController.home);
-  app.use("/", isLoggedIn, tweetController.homeFirst);
   //Profile page
   app.get("/usuario/:username", isLoggedIn, userController.userPage);
   app.get("/usuario/:username/like", isLoggedIn, userController.like);
@@ -34,12 +32,12 @@ const routes = (app) => {
   app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
   app.get("/creardata", seeder.createTweets);
 
+  app.get("/home/:id", isLoggedIn, tweetController.home);
   app.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/login-register");
+    res.redirect("/login-registro");
   });
-  app.get("/home/:id", isLoggedIn, tweetController.home);
-  app.use("/", isLoggedIn, tweetController.homeFirst);
+  app.get("/", isLoggedIn, tweetController.homeFirst);
   //Profile page
 };
 
