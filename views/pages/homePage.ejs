@@ -8,71 +8,73 @@
 
   <div class="tweets ">
 
-    <%- tweets.author %>
-    <% if(tweets == []) {%>
-    <div class="container">
-      <h2 class="text-center pt-5 last-tweets-text">Ultimos tweets subidos:</h2>
-      <div class="row d-flex justify-content-center">
-        <% for (let i = 0; i < 20; i++) { %>
-          <div class="col-9 mb-5">
-            <div class="row">
-              <div class="col-2">
-                <img class='image img-fluid' src="<%- tweets[i].author.avatar%>" alt="">
-
-              </div>
-              <div class="col-10 mb-3">
+    <%tweets.forEach(tweet => {%>
+      <% if(tweet.author.avatar !== undefined) {%>
+        <div class="container">
+          <h2 class="text-center pt-5 last-tweets-text">Ultimos tweets subidos:</h2>
+          <div class="row d-flex justify-content-center">
+            <% for (let i = 0; i < 20; i++) { %>
+              <div class="col-9 mb-5">
                 <div class="row">
-                  <div class="col-6">
-                    <a class="tweet-display-username text-danger" href='/usuario/<%- tweets[i].author.username %> '>@<%- tweets[i].author.username %>  </a>
-                    <small class="tweet-display-name"><%- tweets[i].author.name + ' ' +tweets[i].author.lastname %></small>
+                  <div class="col-2">
+                    <img class='image img-fluid' src="<%- tweets[i].author.avatar%>" alt="">
+    
                   </div>
-                  <div class="col-6 tweet-date mb-2">
-                    <div>
-                      <small><%- tweets[i].date_created.getDate()+'/'+(tweets[i].date_created.getMonth()+ 1 ) +'/'+tweets[i].date_created.getFullYear() + ' - ' +tweets[i].date_created.getHours() + ':' + tweets[i].date_created.getMinutes()%> 
-                        <% if(tweets[i].author.username === req.user.username) {%>
-                          <a href="/usuario/<%- tweets[i]._id %>/borrar" data-toggle="tooltip" data-placement="right" title="Eliminar publicacion"><i class="ml-1 fas fa-trash text-danger" ></i> </a>
-                        <% } %>
-                       </small>
+                  <div class="col-10 mb-3">
+                    <div class="row">
+                      <div class="col-6">
+                        <a class="tweet-display-username text-danger" href='/usuario/<%- tweets[i].author.username %> '>@<%- tweets[i].author.username %>  </a>
+                        <small class="tweet-display-name"><%- tweets[i].author.name + ' ' +tweets[i].author.lastname %></small>
+                      </div>
+                      <div class="col-6 tweet-date mb-2">
+                        <div>
+                          <small><%- tweets[i].date_created.getDate()+'/'+(tweets[i].date_created.getMonth()+ 1 ) +'/'+tweets[i].date_created.getFullYear() + ' - ' +tweets[i].date_created.getHours() + ':' + tweets[i].date_created.getMinutes()%> 
+                            <% if(tweets[i].author.username === req.user.username) {%>
+                              <a href="/usuario/<%- tweets[i]._id %>/borrar" data-toggle="tooltip" data-placement="right" title="Eliminar publicacion"><i class="ml-1 fas fa-trash text-danger" ></i> </a>
+                            <% } %>
+                           </small>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <p class="tweet-display-content">
+                          <%- tweets[i].content %>
+                        </p>
+                      </div>
+                      <div class="col-12 tweet-date mb-3">
+                        <i class="fa fa-heart" heart-id=<%- i %> aria-hidden="true"></i><small class="mr-1"> Me gusta </small>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-12">
-                    <p class="tweet-display-content">
-                      <%- tweets[i].content %>
-                    </p>
-                  </div>
-                  <div class="col-12 tweet-date mb-3">
-                    <i class="fa fa-heart" heart-id=<%- i %> aria-hidden="true"></i><small class="mr-1"> Me gusta </small>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div> 
-        <% } %>
-        
-      </div>
-      <nav aria-label="..." class="center d-flex justify-content-center pb-4">
-        <ul class="pagination center text-danger">
-          <li class="page-item disabled text-danger">
-            <a class="page-link text-danger disabled" href="#" tabindex="-1">Previous</a>
-          </li>
-          <% let tweets_for_row = 20 %>
-          <% let tweets_total = tweets.length %>
-          <% let pages = Math.trunc(tweets_total / tweets_for_row)%>
-          <% if ((tweets_total) % 20 !== 0) { pages + 1 }  %>
-          <% for (let i = 1; i < pages+1; i++) { %>
-
-            <li class="page-item"><a class="page-link text-danger pagination-item" href="/home/<%- i %>/ver"><%- i %></a></li>
-          
-          
-          <% } %>
-
-          <li class="page-item">
-            <a class="page-link text-danger disabled" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-     <% } %>
+              </div> 
+            <% } %>
+            
+          </div>
+          <nav aria-label="..." class="center d-flex justify-content-center pb-4">
+            <ul class="pagination center text-danger">
+              <li class="page-item disabled text-danger">
+                <a class="page-link text-danger disabled" href="#" tabindex="-1">Previous</a>
+              </li>
+              <% let tweets_for_row = 20 %>
+              <% let tweets_total = tweets.length %>
+              <% let pages = Math.trunc(tweets_total / tweets_for_row)%>
+              <% if ((tweets_total) % 20 !== 0) { pages + 1 }  %>
+              <% for (let i = 1; i < pages+1; i++) { %>
+    
+                <li class="page-item"><a class="page-link text-danger pagination-item" href="/home/<%- i %>/ver"><%- i %></a></li>
+              
+              
+              <% } %>
+    
+              <li class="page-item">
+                <a class="page-link text-danger disabled" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+         <% } %>
+    <% }); %>
+    
   </div>
  
   <%- include("../partials/footer") %>
