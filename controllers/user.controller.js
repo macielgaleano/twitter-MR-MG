@@ -3,6 +3,8 @@ const faker = require("faker");
 const { User } = require("../models/mongoose");
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
+const formidable = require("formidable");
+const path = require("path");
 
 const userController = {
   welcome: (req, res) => {
@@ -18,7 +20,6 @@ const userController = {
     users.forEach((user) => {
       users_id.push(user._id);
     });
-    console.log(users_id);
     let foollowing = await db.User.find({
       list_users_following: {
         $nin: users_id,
@@ -28,7 +29,6 @@ const userController = {
       .exec((err, items) => {
         res.json(items);
       });
-    console.log(await foollowing);
   },
 
   showLoginRegistro: (req, res) => {
@@ -80,6 +80,39 @@ const userController = {
   },
   configuration: (req, res) => {
     res.render("./pages/configurationPage.ejs", { req: req });
+  },
+
+  modifyProfileData: async (req, res) => {
+    console.log(req.body);
+    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+    await db.User.findOneAndUpdate(
+      { _id: req.user._id },
+      {
+        username: req.body.username,
+        name: req.body.name,
+        lastname: req.body.lastname,
+        description: req.body.description,
+        email: req.body.email,
+        password: hashedPassword,
+      }
+    );
+    res.redirect("/configuracion");
+  },
+
+  modifyProfileImage: async (req, res) => {
+    console.log(req.body);
+    const form = formidable({
+      multiples: true,
+      uploadDir: path.dirname(__dirname) + "/public/img",
+      keepExtensions: true,
+    });
+    form.parse(req, async (err, fields, files) => {
+      console.log(fields);
+      const imagen = "/img/" + path.basename(files.imagen.path);
+      db.User.update({ _id: req.user._id }, { avatar: imagen });
+      db.save();
+    });
+    res.redirect("/configuracion");
   },
 };
 

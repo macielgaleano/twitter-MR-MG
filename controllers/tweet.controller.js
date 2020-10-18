@@ -45,7 +45,6 @@ const tweetController = {
           })
           .populate("author")
           .exec(function (err, posts) {
-            console.log(posts);
             res.render("./pages/homePage.ejs", {
               req: req,
               tweets: posts,
@@ -55,7 +54,6 @@ const tweetController = {
       });
   },
   pagination: async (req, res) => {
-    console.log(req.params);
     let followings = await db.User.findOne({
       username: req.user.username,
     })

@@ -19,8 +19,14 @@ const routes = (app) => {
 
   //User functions
   app.get("/configuracion", isLoggedIn, userController.configuration);
-  app.post("/usuario/:id/configuracion/imagen");
-  app.post("/usuario/:id/configuracion/datos");
+  app.post("/usuario/configuracion/imagen"),
+    isLoggedIn,
+    userController.modifyProfileImage;
+  app.post(
+    "/usuario/configuracion/datos",
+    isLoggedIn,
+    userController.modifyProfileData
+  );
   app.get("/pagination/:id", isLoggedIn, tweetController.pagination);
 
   //For fetch calls
