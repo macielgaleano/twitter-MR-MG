@@ -3,43 +3,41 @@ const tweetController = require("./controllers/tweet.controller");
 const seeder = require("./seeder");
 
 const routes = (app) => {
-  //Home page
+  app.use("/", isLoggedIn, tweetController.homeFirst); //It's necesary fix them
   app.get("/welcome", userController.welcome);
-  //Login, register pages
-  app.get("/login-registro", userController.showLoginRegistro);
-  //Delete article
-  app.get("/usuario/:tweetId/borrar/", isLoggedIn, tweetController.delete);
-  app.get(
-    "/usuario/:tweetId/borrar/user",
-    isLoggedIn,
-    tweetController.deleteUser
-  );
- 
-  app.post("/tweet/crear", tweetController.createTweets);
+
   app.post("/registro", userController.createUser);
   app.post("/login", userController.login);
-  app.get("/possibleFollowers", userController.possibleFollowers);
-  app.get("/configuracion", isLoggedIn, userController.configuration);
 
+  //Login, register pages
+  app.get("/login-registro", userController.showLoginRegistro);
+
+  //User functions backend
+  app.get("/usuario/:tweetId/borrar/", isLoggedIn, tweetController.delete);
+  app.post("/tweet/crear", tweetController.createTweets);
+
+  //User functions
+  app.get("/configuracion", isLoggedIn, userController.configuration);
+  app.get("/pagination/:id", isLoggedIn, tweetController.pagination);
+
+  //For fetch calls
+  app.get("/possibleFollowers", userController.possibleFollowers);
+
+  //Passport auths
   app.get("/auth/facebook/callback", userController.facebookLogin);
   app.get("/auth/facebook", userController.facebookAuth);
-  
-  app.get("/home/:id", isLoggedIn, tweetController.home);
-  app.use("/", isLoggedIn, tweetController.homeFirst);
-  //Profile page
-  app.get("/usuario/:username", userController.userPage);
-  app.get("/usuario/:username/like", isLoggedIn, userController.like);
-  //Delete article
-  app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
-  app.get("/creardata", seeder.createTweets);
-
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/login-register");
   });
-  app.get("/home/:id", isLoggedIn, tweetController.home);
-  app.use("/", isLoggedIn, tweetController.homeFirst);
+
   //Profile page
+  app.get("/usuario/:username", userController.userPage);
+  app.get("/usuario/:username/like", isLoggedIn, userController.like);
+  app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
+
+  //Seeder
+  app.get("/creardata", seeder.createTweets);
 };
 
 function isLoggedIn(req, res, next) {
