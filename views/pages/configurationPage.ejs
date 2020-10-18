@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
   <link
@@ -73,11 +78,11 @@
               class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="" value="<%- req.user.email %>">
           </div>
           <div class="form-inline" >
-            <div class="form-group mt-2" style="width: 100%">
+            <div class="form-inline mt-2" style="width: 100%">
               <label for="email" class="text-center mt-2">Contrasena:</label>
               <div class="input-group"style="width: 100%" id="show_hide_password">
-                <input class="form-control" style="width: 100%" type="password" name="password">
-                <div class="input-group-addon">
+                <input class="form-control" style="width: 60%" type="password" name="password">
+                <div class="input-group-addon d-flex align-items-center">
                   <a href=""><i class="fa fa-eye-slash text-danger" aria-hidden="true"></i></a>
                 </div>
               </div>
