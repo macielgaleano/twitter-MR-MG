@@ -5,70 +5,82 @@
   <%- include('../partials/verticalNav.ejs') %>
 
   <button id="sidebarCollapse" type="button" class="sidebarCollapseMenu btn btn-danger text-white  text-center rounded-pill shadow-sm px-4 mb-4 "><i class="fas  fa-cogs mr-2"></i><small class="text-uppercase center font-weight-bold"><%- // user.username %></small></button>
-
-  <div class="container">
-  <form class='' action="/configuracion" method="post" enctype="multipart/form-data">
-      <h2 class="text-center pt-5 last-tweets-text" >Modifica tus datos:</h2>
-      <div class="row d-flex justify-content-center">
-        
-        <div class="col-8">
-          <div class="row">
-            <div class="col-4">
-              <img class='image' src="<%-req.user.avatar %>" alt="">
-            </div>
-            <div class="col-2"></div>
-            <div class="col-6">
-              <div class="form-group">
-                <label for=""></label>
-                <input type="file" class="form-control-file" name="" id="" placeholder="" aria-describedby="fileHelpId">
-                <small id="fileHelpId" class="form-text text-muted">Ingrese una imagen formato .jpg o .png</small>
+ <div class="body">
+  <div class="container configuration">
+    <div class="row d-flex justify-content-center ">
+      <div class="col-10">
+        <form class='form-config' action="/configuracion" method="post" enctype="multipart/form-data">
+          <div class="row flex-column d-flex justify-content-center">
+            <div class="row pt-3 color-top ">
+              <div class="col-12 color-top">
+                <h4 class='text-center text-white display-5'>Modificar imagen del perfil:</h4>
               </div>
             </div>
-            <div class="col-6">
-              <label class='mr-3' for="name" >Nombre de usuario actual:</label>
-              "<%- req.user.username %>"
+            <div class="row d-flex justify-content-center color-bottom">
+              <div class="col-3 image-drag ">
+                <img class='image' src="<%- req.user.avatar %>" alt="">
+              </div>
+              <div class="col-6  ">
+                <div class=" files ">
+                  <input type="file" class="" multiple="">
+                </div>
+              </div>
             </div>
-            <div class="col-6">
-              <input name='username' id='username' placeholder='Ingrese un nombre de usuario...' type="text">
+            <div class="row mb-2">
+              <div class="col-12">
+                <h4 class='text-center text-danger display-5 mt-5 mb-5' style='display: block'>Modificar datos de usuario:</h4>
+              </div>
             </div>
-            <div class="col-6">
-              <label class='mr-3' for="name" >Nombre actual:</label>
-              "<%- req.user.name %>"
+            <div class="row d-flex justify-content-center">
+              <div class="col-2">
+                <p class="lead text-secondary d-flex justify-content-end">Usuario:</p>
+              </div>
+              <div class="col-8">
+                <input type="email" name="email" id="email" value='<%- req.user.username %>'>
+              </div>
             </div>
-            <div class="col-6">
-              <input name='name' id='name' placeholder='Ingrese el nombre...' type="text">
-            </div>
-            <div class="col-6">
-              <label class='mr-3' for="lastname" >Apellido actual:</label>
-              "<%- req.user.lastname %>"
-            </div>
-            <div class="col-6">
-              <input name='lastname' id='lastname' placeholder='Ingrese el apellido...' type="text">
-            </div>
-            <div class="col-6">
-              <label class='mr-3' for="lastname" >Descripcion actual:</label>
-              <p>
-                "<%- req.user.description %>"
-              </p>
+            <div class="row d-flex justify-content-center">
+              <div class="col-2">
+                <p class="lead d-flex text-secondary justify-content-end">Nombre:</p>
+              </div>
+              <div class="col-3">
+                <input type="text" name="name" id="name" value='<%- req.user.name %>'>
+              </div>
+              <div class="col-2">
+                <p class="lead text-secondary d-flex justify-content-end">Apellido:</p>
+              </div>
+              <div class="col-3">
+                <input type="text" name="lastname" id="lastname" value='<%- req.user.lastname %>'>
+              </div>
              
             </div>
-            <div class="col-6">
-              <textarea name="description" id="description" cols="30" rows="10" placeholder='ingrese una descripcion'></textarea>
+            <div class="row d-flex justify-content-center">
+              <div class="col-2">
+                <p class="lead text-secondary d-flex justify-content-end">Email:</p>
+              </div>
+              <div class="col-8">
+                <input type="email" name="email" id="email" value='<%- req.user.email %>'>
+              </div>
             </div>
-            <div class="col-6">
-              <label class='mr-3' for="password" >Nueva contraseña:</label>
+            <div class="row d-flex justify-content-center mb-3">
+              <div class="col-2">
+                <p class="lead text-secondary d-flex justify-content-end">Descripcion:</p>
+              </div>
+              <div class="col-8">
+                <textarea name="description" id="description" cols="20" rows="5"><%- req.user.description %></textarea>
+              </div>
             </div>
-            <div class="col-6">
-              <input type="password" placeholder='Ingrese su contraseña...'>
-              <input type="password" placeholder='Repita su contraseña...'>
+            <div class="row center pb-10">
+              <div class="col-5">
+                <button style='' name="" id="" class="btn btn-update btn-danger rounded-pill" href="#" role="button">Actualizar</button>
+              </div>
             </div>
           </div>
-          
-        </div>
+        </form>
       </div>
-        
-  </form>
+    </div>
 </div>  
+ </div>
 
   <%- include("../partials/footer") %>
 </body>

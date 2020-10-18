@@ -1,16 +1,25 @@
 #background {
-    background: rgb(252,81,48);
-background: linear-gradient(90deg, rgba(252,81,48,1) 0%, rgba(252,111,84,1) 55%, rgba(252,136,114,1) 100%);
+  background: rgb(252, 81, 48);
+  background: linear-gradient(
+    90deg,
+    rgba(252, 81, 48, 1) 0%,
+    rgba(252, 111, 84, 1) 55%,
+    rgba(252, 136, 114, 1) 100%
+  );
 }
-#titleWelcome{
-display: flex;
-justify-content: center;
-align-items: center;
-color: white;
-font-family: emoji;
+#titleWelcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: emoji;
 }
 #button-welcome {
-background-color: white;
-color: rgba(252,81,48,1) ;
+  background-color: white;
+  color: rgba(252, 81, 48, 1);
+}
 
+.btn-update {
+  width: 400px;
+  padding: 5px;
 }
