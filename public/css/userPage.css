@@ -199,7 +199,8 @@ Vertical nav */
   flex-direction: column;
   justify-content: end;
   align-content: flex-end;
-  margin: 80% 20px;
+  margin: 0 20px;
+  margin-top: 200%;
 }
 
 .text-area {
@@ -229,6 +230,10 @@ form p {
 }
 
 .modify-text {
+}
+
+.btn {
+  margin: 0;
 }
 
 .not-padding {

@@ -1,0 +1,9 @@
+.possible {
+  position: fixed;
+  top: 18%;
+  left: 80%;
+}
+
+.possible img {
+  width: 50px;
+}

@@ -4,6 +4,7 @@
   <%- include("../partials/head-home") %>
   <%- include('../partials/verticalNav.ejs') %>
   <%- include('../partials/createTweet.ejs') %>
+  <link rel="stylesheet" href="/css/possibleFollowing.css">
   <button id="sidebarCollapse" type="button" class="sidebarCollapseMenu btn btn-danger text-white  text-center rounded-pill shadow-sm px-4 mb-4 "><i class="fas  fa-cogs mr-2"></i><small class="text-uppercase center font-weight-bold"><%- // user.username %></small></button>
 
   <div class="tweets ">
@@ -38,44 +39,47 @@
                           <%- tweets[i].content %>
                         </p>
                       </div>
-                      <div class="col-12 tweet-date mb-3">
-                        <i class="fa fa-heart" heart-id=<%- i %> aria-hidden="true"></i><small class="mr-1"> Me gusta </small>
+                      <div class="col-12 tweet-date mb-3 heart">
+                        <i class="fa fa-heart heart" heart-id=<%- i %> aria-hidden="true">
+                        </i>
+                        <small class="mr-1"> Me gusta 
+                          <small class="likes"> <%- tweets[i].likes %> 
+                          </small> 
+                        </small>
                       </div>
                     </div>
                   </div>
                 </div>
               </div> 
-            <% } %>
-            
-          </div>
-          <nav aria-label="..." class="center d-flex justify-content-center pb-4">
-            <ul class="pagination center text-danger">
-              <li class="page-item disabled text-danger">
-                <a class="page-link text-danger disabled" href="#" tabindex="-1">Previous</a>
-              </li>
-              <% let tweets_for_row = 20 %>
-              <% let tweets_total = tweets.length %>
-              <% let pages = Math.trunc(tweets_total / tweets_for_row)%>
-              <% if ((tweets_total) % 20 !== 0) { pages + 1 }  %>
-              <% for (let i = 1; i < pages+1; i++) { %>
-    
-                <li class="page-item"><a class="page-link text-danger pagination-item" href="/home/<%- i %>/ver"><%- i %></a></li>
-              
-              
-              <% } %>
-    
-              <li class="page-item">
-                <a class="page-link text-danger disabled" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
+            <% } %>   
+          </div> 
         </div>
-         <% } %>
-   
-    
+      <% } %>
+    </div>
+    <div class="possible">
+      <div class="container">
+        <div class="row">
+            <p class="mb-4">Usuarios que deberias seguir:</p>
+            <% for (let i = 0; i < users.length; i++) { %>
+              <div class="d-flex flex-direction-start mb-3">
+                <img class='image' src="<%- users[i].avatar %>" alt="">
+                <div class="d-flex ml-3 flex-column" style="width: 100px">
+                  <div><%- users[i].username %></div>
+                  <small><%- users[i].name +' '+ users[i].lastname   %></small>
+                </div>
+                <div class="button d-flex flex-direction-center" >
+                  <a name="" id="" class="btn btn-danger ml-3" href="/" role="button">Seguir</a>
+                </div>  
+              </div>
+            <% } %>
+
+        </div>
+      </div>
+      
+    </div>
   </div>
- 
   <%- include("../partials/footer") %>
+  <script src="/js/likes.js"></script>
 </body>
 
 </html>

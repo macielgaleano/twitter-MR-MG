@@ -1,0 +1,21 @@
+<nav aria-label="..." class="center d-flex justify-content-center pb-4">
+            <ul class="pagination center text-danger">
+              <li class="page-item disabled text-danger">
+                <a class="page-link text-danger disabled" href="#" tabindex="-1">Previous</a>
+              </li>
+              <% let tweets_for_row = 20 %>
+              <% let tweets_total = tweets.length %>
+              <% let pages = Math.trunc(tweets_total / tweets_for_row)%>
+              <% if ((tweets_total) % 20 !== 0) { pages + 1 }  %>
+              <% for (let i = 1; i < pages+1; i++) { %>
+    
+                <li class="page-item"><a class="page-link text-danger pagination-item" href="/home/<%- i %>/ver"><%- i %></a></li>
+              
+              
+              <% } %>
+    
+              <li class="page-item">
+                <a class="page-link text-danger disabled" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>

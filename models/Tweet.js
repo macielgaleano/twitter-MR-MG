@@ -9,7 +9,7 @@ const tweetSchema = new Schema(
       ref: "User",
     },
     date_created: { type: Date, default: Date.now },
-    likes: Number,
+    likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true }
 );

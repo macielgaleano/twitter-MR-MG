@@ -4,7 +4,6 @@
   <%- include("../partials/head") %>
   <%- include('../partials/verticalNav.ejs') %>
   <button id="sidebarCollapse" type="button" class="sidebarCollapseMenu btn btn-danger text-white  text-center rounded-pill shadow-sm px-4 mb-4 "><i class="fas  fa-cogs mr-2"></i><small class="text-uppercase center font-weight-bold"><%- // user.username %></small></button>
-  <%-   %>
 
   <div class="profile-box">
     
@@ -134,7 +133,13 @@
                       </p>
                     </div>
                     <div class="col-12 tweet-date mb-3 heart">
-                      <i class="fa fa-heart heart" heart-id=<%- i %> aria-hidden="true"></i><small class="mr-1 heart"> Me gusta </small>
+                      <i class="fa fa-heart heart" heart-id=<%- i %> aria-hidden="true">
+                      </i>
+                      <small class="mr-1"> Me gusta 
+                        <small class="likes"> <%- tweets[i].likes %> 
+                        </small> 
+                      </small>
+                      
                     </div>
                   </div>
                 </div>
@@ -147,9 +152,8 @@
   </div>
   
 
-
- 
   <%- include("../partials/footer") %>
+  <script src="/js/likes.js"></script>
 </body>
 
 </html>

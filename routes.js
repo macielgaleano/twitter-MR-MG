@@ -14,7 +14,7 @@ const routes = (app) => {
 
   //User functions backend
   app.get("/usuario/:tweetId/borrar/", isLoggedIn, tweetController.delete);
-  app.get("/creardata", isLoggedIn, seeder.createTweets);
+  app.get("/creardata", seeder.createTweets);
   app.post("/tweet/crear", tweetController.createTweets);
 
   //User functions

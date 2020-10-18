@@ -25,7 +25,7 @@ const userController = {
         $nin: users_id,
       },
     })
-      .limit(10)
+      .limit(6)
       .select("_id username name lastname avatar")
       .exec((err, items) => {
         res.json(items);
