@@ -3,7 +3,7 @@ const tweetController = require("./controllers/tweet.controller");
 const seeder = require("./seeder");
 
 const routes = (app) => {
-  app.use("/", isLoggedIn, tweetController.homeFirst); //It's necesary fix them
+  app.get("/", isLoggedIn, tweetController.homeFirst); //It's necesary fix them
   app.get("/welcome", userController.welcome);
 
   app.post("/registro", userController.createUser);
@@ -14,10 +14,13 @@ const routes = (app) => {
 
   //User functions backend
   app.get("/usuario/:tweetId/borrar/", isLoggedIn, tweetController.delete);
+  app.get("/creardata", isLoggedIn, seeder.createTweets);
   app.post("/tweet/crear", tweetController.createTweets);
 
   //User functions
   app.get("/configuracion", isLoggedIn, userController.configuration);
+  app.post("/usuario/:id/configuracion/imagen");
+  app.post("/usuario/:id/configuracion/datos");
   app.get("/pagination/:id", isLoggedIn, tweetController.pagination);
 
   //For fetch calls
@@ -26,11 +29,19 @@ const routes = (app) => {
   //Passport auths
   app.get("/auth/facebook/callback", userController.facebookLogin);
   app.get("/auth/facebook", userController.facebookAuth);
+
+  //Profile page
+  app.get("/usuario/:username", userController.userPage);
+  app.get("/usuario/:username/like", isLoggedIn, userController.like);
+  //Delete article
+  app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
+  app.get("/creardata", seeder.createTweets);
   app.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/login-register");
+    res.redirect("/login-registro");
   });
 
+  app.get("/", isLoggedIn, tweetController.homeFirst);
   //Profile page
   app.get("/usuario/:username", userController.userPage);
   app.get("/usuario/:username/like", isLoggedIn, userController.like);

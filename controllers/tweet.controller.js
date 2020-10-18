@@ -19,9 +19,7 @@ const tweetController = {
     const userTweet = db.User.findOneAndUpdate(
       { _id: req.user._id },
       { $push: { list_tweets: tweet_saved } }
-    ).exec(function (err, posts) {
-      console.log(posts);
-    });
+    ).exec(function (err, posts) {});
     res.redirect("/");
   },
 

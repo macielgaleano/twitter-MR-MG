@@ -1,88 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
   <link rel="stylesheet" href="/css/userPage.css">
-  <%- include("../partials/head-home") %>
+  <link rel="stylesheet" href="/css/configuration.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+  <link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous"
+/>
   <%- include('../partials/verticalNav.ejs') %>
 
   <button id="sidebarCollapse" type="button" class="sidebarCollapseMenu btn btn-danger text-white  text-center rounded-pill shadow-sm px-4 mb-4 "><i class="fas  fa-cogs mr-2"></i><small class="text-uppercase center font-weight-bold"><%- // user.username %></small></button>
- <div class="body">
-  <div class="container configuration">
-    <div class="row d-flex justify-content-center ">
-      <div class="col-10">
-        <form class='form-config' action="/configuracion" method="post" enctype="multipart/form-data">
-          <div class="row flex-column d-flex justify-content-center">
-            <div class="row pt-3 color-top ">
-              <div class="col-12 color-top">
-                <h4 class='text-center text-white display-5'>Modificar imagen del perfil:</h4>
-              </div>
+ 
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-sm-12 col-8 main-section">
+        
+        <form action="/usuario/:id/configuracion/imagen" method="post" enctype="multipart/form-data">
+          <div class="title text-danger text-center">
+            Cambie su imagen de perfil
+          </div>
+          <div class="form-group">
+            <div class="file-loading">
+              <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
             </div>
-            <div class="row d-flex justify-content-center color-bottom">
-              <div class="col-3 image-drag ">
-                <img class='image' src="<%- req.user.avatar %>" alt="">
-              </div>
-              <div class="col-6  ">
-                <div class=" files ">
-                  <input type="file" class="" multiple="">
-                </div>
-              </div>
-            </div>
-            <div class="row mb-2">
-              <div class="col-12">
-                <h4 class='text-center text-danger display-5 mt-5 mb-5' style='display: block'>Modificar datos de usuario:</h4>
-              </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-              <div class="col-2">
-                <p class="lead text-secondary d-flex justify-content-end">Usuario:</p>
-              </div>
-              <div class="col-8">
-                <input type="email" name="email" id="email" value='<%- req.user.username %>'>
-              </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-              <div class="col-2">
-                <p class="lead d-flex text-secondary justify-content-end">Nombre:</p>
-              </div>
-              <div class="col-3">
-                <input type="text" name="name" id="name" value='<%- req.user.name %>'>
-              </div>
-              <div class="col-2">
-                <p class="lead text-secondary d-flex justify-content-end">Apellido:</p>
-              </div>
-              <div class="col-3">
-                <input type="text" name="lastname" id="lastname" value='<%- req.user.lastname %>'>
-              </div>
-             
-            </div>
-            <div class="row d-flex justify-content-center">
-              <div class="col-2">
-                <p class="lead text-secondary d-flex justify-content-end">Email:</p>
-              </div>
-              <div class="col-8">
-                <input type="email" name="email" id="email" value='<%- req.user.email %>'>
-              </div>
-            </div>
-            <div class="row d-flex justify-content-center mb-3">
-              <div class="col-2">
-                <p class="lead text-secondary d-flex justify-content-end">Descripcion:</p>
-              </div>
-              <div class="col-8">
-                <textarea name="description" id="description" cols="20" rows="5"><%- req.user.description %></textarea>
-              </div>
-            </div>
-            <div class="row center pb-10">
-              <div class="col-5">
-                <button style='' name="" id="" class="btn btn-update btn-danger rounded-pill" href="#" role="button">Actualizar</button>
-              </div>
-            </div>
+          </div>
+          
+        </form>            
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-sm-12 col-8 main-section">
+        <div class="title text-danger lead text-center">
+          Cambie su datos personales
+        </div>
+        <form action="/usuario/:id/configuracion/datos" method="post">
+          <div class="form-group">
+            <label for="username" class="text-center mt-4">Nombre de usuario:</label>
+            <input type="text"
+              class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="" value="<%- req.user.username %>">
+          </div>
+          <div class="form-group">
+            <label for="name" class="text-center mt-4">Nombre:</label>
+            <input type="text"
+              class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="" value="<%- req.user.name %>">
+          </div>
+          <div class="form-group">
+            <label for="lastname" class="text-center mt-4">Apellido:</label>
+            <input type="text"
+              class="form-control" name="lastname" id="lastname" aria-describedby="helpId" placeholder="" value="<%- req.user.lastname %>">
+          </div>
+          <div class="form-group">
+            <label for="email" class="text-center mt-4">Email:</label>
+            <input type="text"
+              class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="" value="<%- req.user.email %>">
           </div>
         </form>
       </div>
     </div>
-</div>  
- </div>
-
-  <%- include("../partials/footer") %>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="/js/configuration.js"></script>
+  <script src="/js/vertical-nav.js"></script>
 </body>
 
 </html>

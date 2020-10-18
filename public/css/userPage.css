@@ -227,19 +227,6 @@ form p {
   text-align: justify;
 }
 
-label {
-  font-family: "Sansita Swashed", cursive;
-}
-
-textarea {
-  padding: 5px;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  border: 1px brown solid;
-}
-
 .modify-text {
 }
 
