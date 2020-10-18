@@ -10,12 +10,11 @@
     
     <div class="container">
       
-      <div class="row ">
-        <div class="col-2"></div>
+      <div class="row d-flex justify-content-center ">
         <div class="col-2">
           <img class='img-fluid' src="<%- user.avatar%>" alt="">
         </div>
-        <div class="col-6">
+        <div class="col-7">
           <h1 class="username-head">
             @<%- user.username %>
           </h1>
@@ -32,9 +31,6 @@
               %></spam></small>
             <small class='email' ><i class=""></i><a class='email' href=""><i class="far fa-envelope"></i> <%-  user.email %></a> </small>
           </div>
-        </div>
-        <div class="col-2">
-          
         </div>
       </div>
     </div>
@@ -55,13 +51,13 @@
   
 
   <div class="tweets ">
-    <h2 class="text-center last-tweets-text mt-4">Ultimos tweets subidos:</h2>
+    <h2 class="text-center last-tweets-text mt-5">Ultimos tweets subidos:</h2>
     <div class="container">
       <div class="row d-flex justify-content-center">
     <% if (req.user.username === user.username) {%>
       
        
-          <div class="col-8 mb-3">
+          <div class="col-10 mb-3 d-flex justify-content-center">
             <div class="row">
               <div class="col-2">
                 <img class="image img-fluid" src="<%- req.user.avatar%>" alt="" />
@@ -81,7 +77,7 @@
                   <div class="col-6 tweet-date mb-2">
                     <div></div>
                   </div>
-                  <div class="col-12">
+                  <div class="col-12  not-padding">
                     <form class="" action="/tweet/crear" method="POST">
                       <label for=""></label>
                       <textarea
@@ -111,7 +107,7 @@
 
         <% if(tweets) {%>
           <% for (let i = 0; i < tweets.length; i++) { %>
-            <div class="col-8 mb-5">
+            <div class="col-10 mb-5 mt-4 justify-content-center">
               <div class="row">
                 <div class="col-2">
                   <img class='image img-fluid' src="<%- user.avatar%>" alt="">

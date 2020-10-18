@@ -48,7 +48,10 @@
           </div>
           <div class="form-group">
             <label for="descritpion" class="text-center mt-3">Descripcion:</label>
-            <textarea class='form-grouptexto md-textarea' name="descritpion" style="width: 100%;" id="description" cols="30" rows="10"><%- req.user.description %></textarea>
+            <textarea class='form-grouptexto md-textarea' name="descritpion" style="width: 100%;" id="description" cols="30" rows="5"><%- req.user.description %></textarea>
+            <div class="words d-flex flex-end justify-content-end">
+              <small class="count"></small><small>/100</small>
+            </div>
           </div>
           <div class="form-group">
             <label for="name" class="text-center mt-2">Nombre:</label>

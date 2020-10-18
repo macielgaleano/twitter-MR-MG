@@ -25,3 +25,7 @@ a:hover {
 .delete-top {
   margin-top: 20px;
 }
+
+textarea {
+  margin-bottom: 0px;
+}

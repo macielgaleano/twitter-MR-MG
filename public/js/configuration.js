@@ -29,3 +29,10 @@ $(document).ready(function () {
     }
   });
 });
+
+$("textarea").on("change keyup paste", function () {
+  var words = $("#description")
+    .val()
+    .split(/[\s\.,;]+/);
+  $(".count").text(words.length);
+});
