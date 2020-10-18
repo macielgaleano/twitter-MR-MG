@@ -26,6 +26,7 @@ const userController = {
       },
     })
       .limit(10)
+      .select("_id username name lastname avatar")
       .exec((err, items) => {
         res.json(items);
       });

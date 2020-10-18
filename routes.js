@@ -30,7 +30,7 @@ const routes = (app) => {
   app.get("/pagination/:id", isLoggedIn, tweetController.pagination);
 
   //For fetch calls
-  app.get("/possibleFollowers", userController.possibleFollowers);
+  app.get("/possiblefollowers", userController.possibleFollowers);
 
   //Passport auths
   app.get("/auth/facebook/callback", userController.facebookLogin);

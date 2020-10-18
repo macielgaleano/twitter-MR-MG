@@ -29,10 +29,13 @@ $(document).ready(function () {
     }
   });
 });
-
-$("textarea").on("change keyup paste", function () {
-  var words = $("#description")
-    .val()
-    .split(/[\s\.,;]+/);
-  $(".count").text(words.length);
+var characters = $("#description").text().length;
+$(".count").text(characters);
+$("#description").on("change keyup keydown click paste ", function () {
+  var characters = $("#description").text().length;
+  console.log(characters);
+  $(".count").text(characters);
+  if (characters > 200) {
+    $(".words").css("color", "red");
+  }
 });
