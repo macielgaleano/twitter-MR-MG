@@ -13,3 +13,15 @@
 .title {
   font-size: 1.5rem;
 }
+
+body {
+  background-color: #efefef;
+}
+a,
+a:hover {
+  color: #333;
+}
+
+.delete-top {
+  margin-top: 20px;
+}

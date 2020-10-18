@@ -214,6 +214,7 @@ Vertical nav */
 
 input[type="text"],
 input[type="password"],
+textarea,
 input[type="email"] {
   padding: 5px;
   width: 100%;
@@ -241,9 +242,11 @@ input[type="tel"]:focus:not([readonly]),
 input[type="text"]:focus:not([readonly]),
 input[type="time"]:focus:not([readonly]),
 input[type="url"]:focus:not([readonly]),
+.texto:focus,
+textarea:focus:not([readonly]),
 textarea.md-textarea:focus:not([readonly]) {
-  border: 1px solid red;
-  box-shadow: 0 1px 0 0 #4285f4;
+  border: 1px solid rgb(165, 8, 8);
+  box-shadow: 0 1px 0 0 rgb(190, 4, 4);
 }
 .files input {
   outline-offset: -10px;
