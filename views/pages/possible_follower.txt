@@ -1,0 +1,18 @@
+<div class="possible">
+      <div class="">
+        <p class="mb-4">Usuarios que deberias seguir:</p>
+        <% for (let i = 0; i < users.length; i++) { %>
+          <div class="d-flex flex-direction-start mb-3">
+            <img class='image' src="<%- users[i].avatar %>" alt="">
+            <div class="d-flex ml-2 flex-column" style="width: 100px">
+              <a href="/usuario/<%- users[i].username%>" class="text-danger"><%- users[i].username.slice(1,12)+'...' %></a>
+              <small><%- users[i].name +' '+ users[i].lastname   %></small>
+            </div>
+            <div class="button d-flex flex-direction-center" >
+              <a name="" id="" class="btn btn-danger ml-3" href="/usuario/<%- users[i].username %>" role="button">Seguir</a>
+            </div>  
+          </div>
+        <% } %>
+      </div>
+      
+    </div>
