@@ -20,7 +20,6 @@ const userController = {
     users.forEach((user) => {
       users_id.push(user._id);
     });
-    console.log(users_id);
     let foollowing = await db.User.find({
       $and: [
         {
@@ -157,18 +156,15 @@ const userController = {
     res.redirect("/configuracion");
   },
 
-  modifyProfileImage: async (req, res) => {
-    console.log(req.body);
+  modifyProfileImage: (req, res) => {
     const form = formidable({
       multiples: true,
-      uploadDir: path.dirname(__dirname) + "/public/img",
+      uploadDir: path.dirname(__dirname) + "/public/images",
       keepExtensions: true,
     });
     form.parse(req, async (err, fields, files) => {
-      console.log(fields);
-      const imagen = "/img/" + path.basename(files.imagen.path);
-      db.User.update({ _id: req.user._id }, { avatar: imagen });
-      db.save();
+      const imagen = "/images/" + path.basename(files.imagen.path);
+      await db.User.update({ _id: req.user._id }, { avatar: imagen });
     });
     res.redirect("/configuracion");
   },

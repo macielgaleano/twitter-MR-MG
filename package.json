@@ -18,7 +18,8 @@
     "nodemon": "^2.0.5",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
