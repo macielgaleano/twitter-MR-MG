@@ -1,16 +1,8 @@
 {
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@vercel/node" },
-    { "src": "package-lock.json", "use": "@vercel/node" },
-    { "src": "seeder.js", "use": "@vercel/node" },
     { "src": "index.js", "use": "@vercel/node" },
-    { "src": "/public/**/*", "use": "@vercel/static" },
-    { "src": "/views/**/*", "use": "@vercel/static" },
-    { "src": "/node_modules/**/*", "use": "@vercel/static" },
-    { "src": "/models/**/*", "use": "@vercel/static" },
-    { "src": "/controllers/**/*", "use": "@vercel/static" },
-    { "src": "/passport/**/*", "use": "@vercel/static" }
+    { "src": "/public/**/*", "use": "@vercel/static" }
   ],
   "routes": [
     {
