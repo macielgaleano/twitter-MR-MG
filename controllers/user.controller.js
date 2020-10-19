@@ -146,6 +146,10 @@ const userController = {
     let authorId = await db.User.find({ username: req.params.username }).select(
       "_id"
     );
+    let likeUSer = await db.Tweet.find({
+      author: req.user._id,
+    }).select("likes");
+    console.log(likeUSer);
     let follow_question = await db.User.find({
       $and: [
         {
@@ -165,6 +169,7 @@ const userController = {
       }),
       req: req,
       follow_question: follow_question,
+      likeUSer: likeUSer,
     });
   },
   configuration: (req, res) => {

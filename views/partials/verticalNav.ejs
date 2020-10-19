@@ -1,62 +1,69 @@
 <div class="vertical-nav bg-white pr-2" id="sidebar">
-  <div class="py-4 px-3 mb-4 bg-light">
-    <div class="media d-flex align-items-center">
-      <img
-        src="<%- req.user.avatar%>"
-        alt="..."
-        width="65"
-        class="mr-3 rounded-circle img-thumbnail shadow-sm"
-      />
-      <div class="media-body">
-        <h4 class="m-0">@<%- req.user.username %></h4>
-        <p class="font-weight-light text-muted mb-0">
-          <%- req.user.name + ' ' +req.user.lastname %>
-        </p>
+  <div class="box">
+    <div class="py-4 px-3 mb-4 bg-light">
+      <div class="media d-flex align-items-center">
+        <img
+          src="<%- req.user.avatar%>"
+          alt="..."
+          width="65"
+          class="mr-3 rounded-circle img-thumbnail shadow-sm"
+        />
+        <div class="media-body">
+          <h4 class="m-0">@<%- req.user.username %></h4>
+          <p class="font-weight-light text-muted mb-0">
+            <%- req.user.name + ' ' +req.user.lastname %>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">
-    Main
-  </p>
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">
+      Main
+    </p>
 
-  <ul class="nav flex-column bg-white mb-0">
-    <li class="nav-item">
-      <a
-        href="/usuario/<%- req.user.username %>"
-        class="nav-link text-dark font-italic bg-light"
+    <ul class="nav flex-column bg-white mb-0">
+      <li class="nav-item">
+        <a
+          href="/usuario/<%- req.user.username %>"
+          class="nav-link text-dark font-italic bg-light"
+        >
+          <i class="fa fa-home mr-3 text-danger fa-fw"></i>
+          Mi perfil
+        </a>
+        <a href="/" class="nav-link text-dark font-italic bg-light">
+          <i class="fa fa-th-large mr-3 text-danger fa-fw"></i>
+          Inicio
+        </a>
+        <a
+          href="/configuracion"
+          class="nav-link text-dark font-italic bg-light"
+        >
+          <i class="fa fa-cog mr-3 text-danger fa-fw"></i>
+          Configuracion
+        </a>
+      </li>
+    </ul>
+
+    <div class="buttons mt-5">
+      <button
+        id="sidebarCollapse"
+        type="button"
+        class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-2"
       >
-        <i class="fa fa-home mr-3 text-danger fa-fw"></i>
-        Mi perfil
+        <i class="fa fa-bars mr-2"></i
+        ><small class="mmb-5 text-uppercase font-weight-bold"
+          >Cerrar Menu</small
+        >
+      </button>
+      <a
+        id="sidebarCollapse"
+        type="button"
+        class="btn btn-danger rounded-pill shadow-sm px-4"
+        href="/logout"
+      >
+        <i class="fas fa-sign-out-alt"></i>
+        <small class="text-uppercase font-weight-bold">Cerrar sesión</small>
       </a>
-      <a href="/" class="nav-link text-dark font-italic bg-light">
-        <i class="fa fa-th-large mr-3 text-danger fa-fw"></i>
-        Inicio
-      </a>
-      <a href="/configuracion" class="nav-link text-dark font-italic bg-light">
-        <i class="fa fa-cog mr-3 text-danger fa-fw"></i>
-        Configuracion
-      </a>
-    </li>
-  </ul>
-
-  <div class="buttons">
-    <button
-      id="sidebarCollapse"
-      type="button"
-      class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-2"
-    >
-      <i class="fa fa-bars mr-2"></i
-      ><small class="mmb-5 text-uppercase font-weight-bold">Cerrar Menu</small>
-    </button>
-    <a
-      id="sidebarCollapse"
-      type="button"
-      class="btn btn-danger rounded-pill shadow-sm px-4"
-      href="/logout"
-    >
-      <i class="fas fa-sign-out-alt"></i>
-      <small class="text-uppercase font-weight-bold">Cerrar sesión</small>
-    </a>
+    </div>
   </div>
 </div>
