@@ -11,8 +11,8 @@
       "dest": "/public/css/$1"
     },
     {
-      "src": "/view/(.*)",
-      "dest": "/view/$1"
+      "src": "/views/(.*)",
+      "dest": "/views/$1"
     },
     {
       "src": "/(.*)",
