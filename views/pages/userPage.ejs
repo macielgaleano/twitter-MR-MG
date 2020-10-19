@@ -62,7 +62,7 @@
     <div class="container">
       <div class="row d-flex justify-content-center">
         <% if (req.user.username === user.username) {%>
-          <div class="col-10 mb-3 d-flex justify-content-center">
+          <div class="col-10 mb-3 ">
             <div class="row">
               <div class="col-2">
                 <img class="image img-fluid" src="<%- req.user.avatar%>" alt="" />
@@ -110,7 +110,7 @@
         <% } %>
         <% if(tweets) {%>
           <% for (let i = 0; i < tweets.length; i++) { %>
-            <div class="col-10 mb-5 mt-4 justify-content-center">
+            <div class="col-10 mb-5 mt-4 ">
               <div class="row">
                 <div class="col-2">
                   <img class='image img-fluid' src="<%- user.avatar%>" alt="">
@@ -139,7 +139,7 @@
                       <i class="fa fa-heart heart" heart-id=<%- i %> aria-hidden="true">
                       </i>
                       <small class="mr-1"> Me gusta 
-                        <small class="likes"> <%- tweets[i].likes %> 
+                        <small class="likes"> <%- tweets[i].likes.length %> 
                         </small> 
                       </small>
                     </div>

@@ -20,6 +20,7 @@ const userController = {
     users.forEach((user) => {
       users_id.push(user._id);
     });
+    console.log(users_id);
     let foollowing = await db.User.find({
       $and: [
         {

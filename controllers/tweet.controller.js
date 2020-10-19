@@ -13,7 +13,6 @@ const tweetController = {
       content: req.body.content_text,
       author: req.user._id,
       date_created: Date.now(),
-      likes: 0,
     });
     await tweet.save();
     const tweet_saved = db.Tweet.findOne({ content: req.body.content_text });
