@@ -1,5 +1,6 @@
 const db = require("../models/mongoose");
 const fetch = require("node-fetch");
+const path = require("path");
 
 const tweetController = {
   delete: async (req, res) => {
@@ -45,7 +46,9 @@ const tweetController = {
           })
           .populate("author")
           .exec(function (err, posts) {
-            fetch("http://localhost:3000/possibleFollowers")
+            fetch(
+              `${path.join(__dirname, process.env.APP_PORT)}/possibleFollowers`
+            )
               .then((data) => data.json())
               .then(async (data) => {
                 res.render("./pages/homePage.ejs", {

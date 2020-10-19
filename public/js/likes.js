@@ -9,7 +9,10 @@ $(".heart").on("click", function (event) {
   console.log(
     `position ${position} - username: ${username} - tweet_id: ${tweet_id}`
   );
-  let url = `http://localhost:3000/usuario/${username}/like/${tweet_id}`;
+  let url = `${path.join(
+    __dirname,
+    process.env.APP_PORT
+  )}/usuario/${username}/like/${tweet_id}`;
 
   fetch(url)
     .then((data) => data.json())

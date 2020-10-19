@@ -136,7 +136,7 @@
                       </p>
                     </div>
                     <div class="col-12 tweet-date mb-3 heart">
-                      <a href="<%- `http://localhost:3000/usuario/${req.user.username}/like/${tweets[i]}`; %>">
+                      <a href="<%- `${path.join(__dirname, process.env.APP_PORT)}/usuario/${req.user.username}/like/${tweets[i]}`; %>">
                         <i class="fa fa-heart heart text-secondary" heart-id=<%- i %> aria-hidden="true">
                         </i>
                       </a>

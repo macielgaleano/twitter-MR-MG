@@ -3,6 +3,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const bcrypt = require("bcryptjs");
+const path = require("path");
 
 function initialize(passport) {
   passport.use(
@@ -33,7 +34,10 @@ function initialize(passport) {
       {
         clientID: process.env.FACEBOOK_APP_ID,
         clientSecret: process.env.FACEBOOK_APP_SECRET,
-        callbackURL: "http://localhost:3000/auth/facebook/callback",
+        callbackURL: `${path.join(
+          __dirname,
+          process.env.APP_PORT
+        )}/auth/facebook/callback`,
         profileFields: ["first_name", "last_name", "email"],
       },
       function (accessToken, refreshToken, profile, done) {

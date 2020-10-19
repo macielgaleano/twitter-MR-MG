@@ -31,5 +31,5 @@ initialize(passport);
 routes(app);
 
 app.listen(process.env.APP_PORT, () =>
-  console.log(`App on: http://localhost:${process.env.APP_PORT}`)
+  console.log(`App on: ${path.join(__dirname, process.env.APP_PORT)}`)
 );
