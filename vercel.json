@@ -3,16 +3,13 @@
   "builds": [
     { "src": "package.json", "use": "@vercel/node" },
     { "src": "index.js", "use": "@vercel/node" },
-    { "src": "/public/**/*", "use": "@vercel/static" }
+    { "src": "/public/**/*", "use": "@vercel/static" },
+    { "src": "/views/**/*", "use": "@vercel/node" }
   ],
   "routes": [
     {
       "src": "/css/(.*)",
       "dest": "/public/css/$1"
-    },
-    {
-      "src": "/views/(.*)",
-      "dest": "/views/$1"
     },
     {
       "src": "/(.*)",
