@@ -4,7 +4,8 @@
     { "src": "package.json", "use": "@vercel/node" },
     { "src": "index.js", "use": "@vercel/node" },
     { "src": "/public/**/*", "use": "@vercel/static" },
-    { "src": "/views/**/*", "use": "@vercel/static" }
+    { "src": "/views/**/*", "use": "@vercel/static" },
+    { "src": "/node_modules/**/*", "use": "@vercel/static" }
   ],
   "routes": [
     {
