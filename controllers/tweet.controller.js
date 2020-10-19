@@ -46,9 +46,8 @@ const tweetController = {
           })
           .populate("author")
           .exec(function (err, posts) {
-            fetch(
-              `${path.dirname() + ":" + process.env.APP_PORT}/possibleFollowers`
-            )
+            console.log(path.dirname());
+            fetch(`${__dirname}:${process.env.APP_PORT}/possibleFollowers`)
               .then((data) => data.json())
               .then(async (data) => {
                 res.render("./pages/homePage.ejs", {
