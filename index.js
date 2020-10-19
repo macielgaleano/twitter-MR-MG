@@ -11,17 +11,17 @@ const { routes } = require("./routes");
 // Configuracion app
 app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs", "formidable");
+app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(
-//   session({
-//     secret: "AlgúnTextoSuperSecreto",
-//     resave: false,
-//     saveUninitialized: false,
-//   })
-// );
+app.use(
+  session({
+    secret: "AlgúnTextoSuperSecreto",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
