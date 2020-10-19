@@ -1,9 +1,15 @@
 .possible {
   position: fixed;
   top: 18%;
-  left: 80%;
+  left: 84%;
 }
 
 .possible img {
   width: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+  .possible {
+    display: none;
+  }
 }

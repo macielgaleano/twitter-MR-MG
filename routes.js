@@ -36,9 +36,6 @@ const routes = (app) => {
   app.get("/auth/facebook/callback", userController.facebookLogin);
   app.get("/auth/facebook", userController.facebookAuth);
 
-  //Profile page
-  app.get("/usuario/:username", userController.userPage);
-  app.get("/usuario/:username/like", isLoggedIn, userController.like);
   //Delete article
   app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
   app.get("/creardata", seeder.createTweets);
@@ -52,6 +49,11 @@ const routes = (app) => {
   app.get("/usuario/:username", userController.userPage);
   app.get("/usuario/:username/like", isLoggedIn, userController.like);
   app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
+  app.get(
+    "/usuario/:username/follow/:usernamef",
+    isLoggedIn,
+    userController.follow
+  );
 
   //Seeder
   app.get("/creardata", seeder.createTweets);

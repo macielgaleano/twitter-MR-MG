@@ -49,7 +49,6 @@ const tweetController = {
             fetch("http://localhost:3000/possibleFollowers")
               .then((data) => data.json())
               .then(async (data) => {
-                console.log(await data);
                 res.render("./pages/homePage.ejs", {
                   req: req,
                   tweets: posts,

@@ -21,9 +21,13 @@ const userController = {
       users_id.push(user._id);
     });
     let foollowing = await db.User.find({
-      list_users_following: {
-        $nin: users_id,
-      },
+      $and: [
+        {
+          list_users_following: {
+            $nin: users_id,
+          },
+        },
+      ],
     })
       .limit(6)
       .select("_id username name lastname avatar")
@@ -35,6 +39,28 @@ const userController = {
   showLoginRegistro: (req, res) => {
     res.render("homeLogin");
   },
+  follow: async (req, res) => {
+    await db.User.findOneAndUpdate(
+      { _id: req.params.username },
+      {
+        $push: {
+          list_users_following: await req.params.usernamef,
+        },
+      }
+    ).exec(async (err, post) => {
+      await db.User.findOneAndUpdate(
+        { _id: req.params.usernamef },
+        {
+          $push: {
+            list_users_followers: await req.params.username,
+          },
+        }
+      );
+    });
+
+    res.redirect("/");
+  },
+
   like: async (req, res) => {
     let user = await db.User.find({ username: req.params.username });
   },
