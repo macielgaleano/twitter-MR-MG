@@ -39,27 +39,6 @@ const userController = {
   showLoginRegistro: (req, res) => {
     res.render("homeLogin");
   },
-  follow: async (req, res) => {
-    await db.User.findOneAndUpdate(
-      { _id: req.params.username },
-      {
-        $push: {
-          list_users_following: await req.params.usernamef,
-        },
-      }
-    ).exec(async (err, post) => {
-      await db.User.findOneAndUpdate(
-        { _id: req.params.usernamef },
-        {
-          $push: {
-            list_users_followers: await req.params.username,
-          },
-        }
-      );
-    });
-
-    res.redirect("/");
-  },
 
   like: async (req, res) => {
     let user = await db.User.find({ username: req.params.username });
@@ -97,12 +76,26 @@ const userController = {
     let authorId = await db.User.find({ username: req.params.username }).select(
       "_id"
     );
+    let follow_question = await db.User.find({
+      $and: [
+        {
+          list_users_followers: {
+            $in: [req.user._id],
+          },
+        },
+        {
+          _id: authorId,
+        },
+      ],
+    }).select("_id");
+    console.log(follow_question);
     res.render("./pages/userPage.ejs", {
       user: await db.User.findOne({ username: req.params.username }).exec(),
       tweets: await db.Tweet.find({ author: authorId }).sort({
         date_created: "desc",
       }),
       req: req,
+      follow_question: follow_question,
     });
   },
   configuration: (req, res) => {

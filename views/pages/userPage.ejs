@@ -19,6 +19,16 @@
           </h1>
           <div class="user-name">
             <%- user.name + ' ' +user.lastname %>
+            <% if (req.user){%>
+              <% if (req.user.username !== user.username){%>
+                <% if (follow_question.length == 0){%>
+                  <a name="" id="" class="ml-3 btn btn-secondary" href="/usuario/<%-user.username%>/seguir" role="button">Seguir</a>
+                <% } %>
+                <% if (follow_question.length > 0){%>
+                  <a name="" id="" class="ml-3 btn btn-warning" href="/usuario/<%-user.username%>/dejarseguir" role="button">Dejar de seguir</a>
+                <% } %>
+              <% } %>
+            <% } %>
           </div>
           <p class="user-description">
             "<%- user.description %>"
@@ -30,6 +40,7 @@
               %></spam></small>
             <small class='email' ><i class=""></i><a class='email' href=""><i class="far fa-envelope"></i> <%-  user.email %></a> </small>
           </div>
+            
         </div>
       </div>
     </div>
@@ -46,16 +57,11 @@
       </svg>
     </div>
   </div>
-
-  
-
   <div class="tweets ">
     <h2 class="text-center last-tweets-text mt-5">Ultimos tweets subidos:</h2>
     <div class="container">
       <div class="row d-flex justify-content-center">
-    <% if (req.user.username === user.username) {%>
-      
-       
+        <% if (req.user.username === user.username) {%>
           <div class="col-10 mb-3 d-flex justify-content-center">
             <div class="row">
               <div class="col-2">
@@ -85,7 +91,6 @@
                         id="content_text"
                         rows="3"
                       ></textarea>
-      
                       <button
                         name=""
                         id=""
@@ -103,14 +108,12 @@
             </div>
           </div>
         <% } %>
-
         <% if(tweets) {%>
           <% for (let i = 0; i < tweets.length; i++) { %>
             <div class="col-10 mb-5 mt-4 justify-content-center">
               <div class="row">
                 <div class="col-2">
                   <img class='image img-fluid' src="<%- user.avatar%>" alt="">
-
                 </div>
                 <div class="col-10 mb-3">
                   <div class="row">
@@ -139,7 +142,6 @@
                         <small class="likes"> <%- tweets[i].likes %> 
                         </small> 
                       </small>
-                      
                     </div>
                   </div>
                 </div>
@@ -150,10 +152,7 @@
       </div>
     </div>
   </div>
-  
-
   <%- include("../partials/footer") %>
   <script src="/js/likes.js"></script>
 </body>
-
 </html>

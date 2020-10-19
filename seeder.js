@@ -16,7 +16,7 @@ const seeder = {
     });
     await user.save();
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 8; i++) {
       let username = faker.internet.userName();
 
       let user = new db.User({
@@ -29,7 +29,7 @@ const seeder = {
         password: "root",
       });
 
-      for (let r = 0; r < 5; r++) {
+      for (let r = 0; r < 10; r++) {
         let tweet = new db.Tweet({
           content: faker.lorem.words(30),
           author: user._id,
