@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const tweetSchema = require("./Tweet");
 const userSchema = require("./User");
 
-mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true });
+mongoose.connect(
+  "mongodb+srv://conecta2:1234@cluster0.h9yty.mongodb.net/<conecta2>?authSource=admin&replicaSet=atlas-akyu8h-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
+  { useNewUrlParser: true }
+);
 
 mongoose.connection
   .once("open", () =>
