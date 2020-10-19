@@ -11,10 +11,15 @@ body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
 }
+#inciar-sesion {
+  padding-top: 100px;
+} 
+
  
 h1 {
   font-weight: bold;
   margin: 0;
+ 
 }
 
 h2 {
@@ -70,7 +75,7 @@ form {
   background-color: #ffffff;
   display: flex;
   align-items: center;
-  overflow: scroll;
+  overflow: overlay;
   flex-direction: column;
   padding: 0 50px;
   height: 100%;
