@@ -3,38 +3,49 @@
   <%- include("partials/head") %>
 
   <body class="center-container">
+     
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="/registro" method="POST">
+ 
+        <form  id="registrationForm" data-parsley-validate="" action="/registro" method="POST"  > 
+   
           <h1>Crear cuenta</h1>
           <div class="social-container">
             <a href="/auth/facebook" class="social"
               ><i class="fab fa-facebook-f"></i
             ></a>
             <!-- <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
+			      	<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
           </div>
           <span>O use su email para registrarse</span>
+           
           <input
             type="text"
             class="form-control"
+            
             id="name"
             name="name"
-            placeholder="Name"
+            placeholder="Nombre"
+            data-parsley-length="[4, 20]" 
+            required=""
           />
           <input
             type="text"
             class="form-control"
             id="lastname"
             name="lastname"
-            placeholder="Lastname"
+            placeholder="Apellido"
+            data-parsley-length="[4, 20]" 
+            required=""
           />
           <input
             type="text"
             name="username"
             class="form-control"
             id="username"
-            placeholder="Username"
+            placeholder="Nombre de Usuario "
+            data-parsley-length="[4, 20]" 
+            required=""
           />
           <input
             type="text"
@@ -42,15 +53,20 @@
             class="form-control"
             id="email"
             placeholder="Email"
+            data-parsley-trigger="change" required=""
           />
           <input
             type="password"
             name="password"
             class="form-control"
             id="password"
-            placeholder="Password"
+            placeholder="Contraseña"
+            data-parsley-minlength="8"
+            required="" 
           />
-          <button type="submit" class="mb-1 mt-2">Registrarse</button>
+          
+ 
+          <button   type="submit"  name="submitinfo" id="submitsignup" alt="Sign Up Now" class="mb-1 mt-2">Registrarse</button>
         </form>
       </div>
       <div class="form-container sign-in-container">

@@ -222,7 +222,7 @@ input[type="email"] {
   font-family: "Open Sans", sans-serif;
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  border: 1px brown solid;
+  /* border: 1px brown solid; */
 }
 
 form p {
