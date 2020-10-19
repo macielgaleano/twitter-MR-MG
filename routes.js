@@ -49,6 +49,8 @@ const routes = (app) => {
   app.get("/usuario/:username", userController.userPage);
   app.get("/usuario/:username/like", isLoggedIn, userController.like);
   app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
+  app.get("/usuario/:usuario/dejarseguir", isLoggedIn, userController.unfollow);
+  app.get("/usuario/:usuario/seguir", isLoggedIn, userController.follow);
 
   //Seeder
   app.get("/creardata", seeder.createTweets);

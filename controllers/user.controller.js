@@ -43,6 +43,43 @@ const userController = {
   like: async (req, res) => {
     let user = await db.User.find({ username: req.params.username });
   },
+
+  follow: async (req, res) => {},
+
+  unfollow: async (req, res) => {
+    let user = await db.User.find({ username: req.params.usuario }).select(
+      "_id"
+    );
+    await db.User.findOneAndUpdate(
+      { _id: user },
+      { $pull: { list_users_followers: req.user._id } },
+      { new: true }
+    );
+    await db.User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $pull: { list_users_following: user[0]._id } },
+      { new: true }
+    ).exec((err, result) => {});
+    res.redirect("/");
+  },
+
+  follow: async (req, res) => {
+    let user = await db.User.find({ username: req.params.usuario }).select(
+      "_id"
+    );
+    await db.User.findOneAndUpdate(
+      { _id: user },
+      { $push: { list_users_followers: req.user._id } },
+      { new: true }
+    );
+    await db.User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $push: { list_users_following: user[0]._id } },
+      { new: true }
+    ).exec((err, result) => {});
+    res.redirect("/");
+  },
+
   createUser: async (req, res) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     const user = await new User({
