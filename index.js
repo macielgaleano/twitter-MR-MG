@@ -15,13 +15,13 @@ app.set("view engine", "ejs", "formidable");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(
-  session({
-    secret: "AlgúnTextoSuperSecreto",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
+// app.use(
+//   session({
+//     secret: "AlgúnTextoSuperSecreto",
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
 
 app.use(passport.initialize());
 app.use(passport.session());
