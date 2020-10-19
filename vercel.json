@@ -1,6 +1,7 @@
 {
   "version": 2,
   "builds": [
+    { "src": "package.json", "use": "@vercel/next" },
     { "src": "index.js", "use": "@now/node-server" },
     { "src": "/public/**/*", "use": "@now/static" }
   ],
