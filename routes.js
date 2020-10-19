@@ -3,7 +3,7 @@ const tweetController = require("./controllers/tweet.controller");
 const seeder = require("./seeder");
 
 const routes = (app) => {
-  app.get("/", isLoggedIn, tweetController.homeFirst); //It's necesary fix them
+  app.get("/", isLoggedIn, tweetController.homeFirst);
   app.get("/welcome", userController.welcome);
 
   app.post("/registro", userController.createUser);
@@ -49,8 +49,8 @@ const routes = (app) => {
 
   app.get("/", isLoggedIn, tweetController.homeFirst);
   //Profile page
-  app.get("/usuario/:username", userController.userPage);
-  app.get("/usuario/:username/like", isLoggedIn, userController.like);
+  app.get("/usuario/:username", isLoggedIn, userController.userPage);
+  app.get("/usuario/:username/like/:tweet", isLoggedIn, userController.like);
   app.get("/usuario/:tweetId/borrar", isLoggedIn, tweetController.delete);
   app.get("/usuario/:usuario/dejarseguir", isLoggedIn, userController.unfollow);
   app.get("/usuario/:usuario/seguir", isLoggedIn, userController.follow);

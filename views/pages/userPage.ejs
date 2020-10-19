@@ -125,7 +125,7 @@
                       <div>
                         <small><%- tweets[i].date_created.getDate()+'/'+(tweets[i].date_created.getMonth()+ 1 ) +'/'+tweets[i].date_created.getFullYear() + ' - ' +tweets[i].date_created.getHours() + ':' + tweets[i].date_created.getMinutes()%> 
                           <% if(user.username === req.user.username) {%>
-                            <a href="/usuario/<%- tweets[i]._id %>/borrar/user" data-toggle="tooltip" data-placement="right" title="Eliminar publicacion"><i class="ml-1 fas fa-trash text-danger" ></i> </a>
+                            <a href="/usuario/<%- tweets[i]._id %>/borrar/" data-toggle="tooltip" data-placement="right" title="Eliminar publicacion"><i class="ml-1 fas fa-trash text-danger" ></i> </a>
                           <% } %>
                         </small>
                       </div>
@@ -139,7 +139,7 @@
                       <i class="fa fa-heart heart" heart-id=<%- i %> aria-hidden="true">
                       </i>
                       <small class="mr-1"> Me gusta 
-                        <small class="likes"> <%- tweets[i].likes.length %> 
+                        <small class="likes" username=<%-req.user.username %> tweet-id=<%- tweets[i]._id %>> <%- tweets[i].likes.length %> 
                         </small> 
                       </small>
                     </div>

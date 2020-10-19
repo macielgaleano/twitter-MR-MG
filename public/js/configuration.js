@@ -33,7 +33,6 @@ var characters = $("#description").text().length;
 $(".count").text(characters);
 $("#description").on("change keyup keydown click paste ", function () {
   var characters = $("#description").text().length;
-  console.log(characters);
   $(".count").text(characters);
   if (characters > 200) {
     $(".words").css("color", "red");

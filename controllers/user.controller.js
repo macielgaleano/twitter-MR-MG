@@ -41,7 +41,40 @@ const userController = {
   },
 
   like: async (req, res) => {
-    let user = await db.User.find({ username: req.params.username });
+    let user = await db.User.find({ username: req.params.username }).select(
+      "_id"
+    );
+    let verification = await db.Tweet.findOne({
+      $and: [
+        { _id: req.params.tweet },
+        {
+          likes: {
+            $in: [user[0]._id],
+          },
+        },
+      ],
+    });
+    console.log("verification" + verification);
+    if (verification) {
+      let tweet = await db.Tweet.updateOne(
+        { _id: req.params.tweet },
+        {
+          $pull: {
+            likes: user[0]._id,
+          },
+        }
+      );
+    } else if (!verification) {
+      console.log("sis");
+      let tweet = await db.Tweet.updateOne(
+        { _id: req.params.tweet },
+        {
+          $push: {
+            likes: user[0]._id,
+          },
+        }
+      );
+    }
   },
 
   follow: async (req, res) => {},
@@ -125,7 +158,6 @@ const userController = {
         },
       ],
     }).select("_id");
-    console.log(follow_question);
     res.render("./pages/userPage.ejs", {
       user: await db.User.findOne({ username: req.params.username }).exec(),
       tweets: await db.Tweet.find({ author: authorId }).sort({
@@ -140,7 +172,6 @@ const userController = {
   },
 
   modifyProfileData: async (req, res) => {
-    console.log(req.body);
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     await db.User.findOneAndUpdate(
       { _id: req.user._id },
