@@ -48,7 +48,7 @@ const tweetController = {
           .exec(function (err, posts) {
             fetch(
               `${path.join(
-                path.dirname,
+                path.dirname(),
                 process.env.APP_PORT
               )}/possibleFollowers`
             )
