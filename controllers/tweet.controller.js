@@ -46,16 +46,15 @@ const tweetController = {
           })
           .populate("author")
           .exec(function (err, posts) {
-            console.log();
-            fetch(`/possibleFollowers`)
-              .then((data) => data.json())
-              .then(async (data) => {
-                res.render("/pages/homePage", {
-                  req: req,
-                  tweets: posts,
-                  users: data,
-                });
-              });
+            res.render("/pages/homePage", {
+              req: req,
+              tweets: posts,
+            });
+            // fetch(`/possibleFollowers`)
+            //   .then((data) => data.json())
+            //   .then(async (data) => {
+
+            //   });
           });
       });
   },
