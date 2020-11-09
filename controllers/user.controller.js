@@ -41,9 +41,7 @@ const userController = {
   },
 
   like: async (req, res) => {
-    let user = await db.User.find({ username: req.params.username }).select(
-      "_id"
-    );
+    let user = await db.User.find({ username: req.params.username }).select("_id");
     let verification = await db.Tweet.findOne({
       $and: [
         { _id: req.params.tweet },
@@ -80,9 +78,7 @@ const userController = {
   follow: async (req, res) => {},
 
   unfollow: async (req, res) => {
-    let user = await db.User.find({ username: req.params.usuario }).select(
-      "_id"
-    );
+    let user = await db.User.find({ username: req.params.usuario }).select("_id");
     await db.User.findOneAndUpdate(
       { _id: user },
       { $pull: { list_users_followers: req.user._id } },
@@ -97,9 +93,7 @@ const userController = {
   },
 
   follow: async (req, res) => {
-    let user = await db.User.find({ username: req.params.usuario }).select(
-      "_id"
-    );
+    let user = await db.User.find({ username: req.params.usuario }).select("_id");
     await db.User.findOneAndUpdate(
       { _id: user },
       { $push: { list_users_followers: req.user._id } },
@@ -143,9 +137,7 @@ const userController = {
   facebookAuth: passport.authenticate("facebook", { scope: "email" }),
 
   userPage: async (req, res) => {
-    let authorId = await db.User.find({ username: req.params.username }).select(
-      "_id"
-    );
+    let authorId = await db.User.find({ username: req.params.username }).select("_id");
     let likeUSer = await db.Tweet.find({
       author: req.user._id,
     }).select("likes");
@@ -177,18 +169,6 @@ const userController = {
   },
 
   modifyProfileData: async (req, res) => {
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-    await db.User.findOneAndUpdate(
-      { _id: req.user._id },
-      {
-        username: req.body.username,
-        name: req.body.name,
-        lastname: req.body.lastname,
-        description: req.body.description,
-        email: req.body.email,
-        password: hashedPassword,
-      }
-    );
     res.redirect("/configuracion");
   },
 

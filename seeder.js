@@ -5,17 +5,6 @@ const { lorem } = require("faker");
 
 const seeder = {
   createTweets: async () => {
-    let user = new db.User({
-      name: "Maciel",
-      lastname: "Galeano",
-      username: "Gallardo2",
-      email: "macielgaleano.jh@gmail.com",
-      description: faker.lorem.words(40),
-      avatar: faker.image.avatar(),
-      password: "$2a$10$49f1ig7Fjnw6eIqDdWeN6uqkM4Ei7Mh/RDmsB9ugBnEUypiDYbEba",
-    });
-    await user.save();
-
     for (let i = 0; i < 8; i++) {
       let username = faker.internet.userName();
 
@@ -70,9 +59,7 @@ const seeder = {
       user_names.push(users[i]._id);
     }
     for (let k = 0; k < users.length; k++) {
-      let value = Math.floor(
-        Math.random() * (user_names.length - 1 - 1 + 1) + 1
-      );
+      let value = Math.floor(Math.random() * (user_names.length - 1 - 1 + 1) + 1);
       for (let r = 0; r < value; r++) {
         if (user_names[r] !== users[k]._id) {
           db.User.findOneAndUpdate(
